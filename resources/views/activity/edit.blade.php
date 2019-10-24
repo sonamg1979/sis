@@ -53,6 +53,15 @@
                 {{Form::label('abudget','Allotted Budget (in million)')}}
                 {{Form::text('allotted_budget',$activitys->allotted_budget,['class'=>'form-control','placeholder'=>'Budget Allotted'])}}
             </div>
+            <div class="form-group">
+                <label for="">Site Engineer</label>
+                <select id="engineer" name="engineer" class="form-control" required>
+                    <option value=''>Funding</option>
+                    @foreach($engineer as $data)
+                        <option value="{{$data->employee_id}}" {{($data->employee_id == $activitys->site_engineer) ? 'selected' : '' }}>{{$data->employee_id}}</option>
+                    @endforeach
+                </select>
+            </div>
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}
     </div>

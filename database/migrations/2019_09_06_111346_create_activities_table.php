@@ -24,6 +24,7 @@ class CreateActivitiesTable extends Migration
             $table->integer('allotted_budget');
             $table->date('sdate');
             $table->date('edate');
+            $table->string('site_engineer');
             $table->char('status',1);
             $table->longText('remarks');
             $table->timestamps();

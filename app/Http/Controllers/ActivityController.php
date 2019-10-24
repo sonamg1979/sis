@@ -54,8 +54,12 @@ class ActivityController extends Controller
             ->get();
         $budget=DB::table('budgets')
             ->get();
+        $engineer=DB::table('profiles')
+            ->where('subsector', '=', 5)
+            ->get();
         return view('activity.create')
             ->with('budgets',$budget)
+            ->with('engineer',$engineer)
             ->with('fyears',$fyears);
     }
 
@@ -73,6 +77,7 @@ class ActivityController extends Controller
             'activity' =>'required',
             'sdate' =>'required',
             'edate' =>'required',
+            'engineer' =>'required',
             'budget_line' =>'required',
             'allotted_budget' =>'required'
         ]);
@@ -85,6 +90,7 @@ class ActivityController extends Controller
         $activity->activity = $request->input('activity');
         $activity->sdate = $request->input('sdate');
         $activity->edate = $request->input('edate');
+        $activity->site_engineer = $request->input('engineer');
         $activity->budget_line = $request->input('budget_line');
         $activity->allotted_budget = $request->input('allotted_budget');
         $activity->status = 'N';
@@ -127,8 +133,12 @@ class ActivityController extends Controller
             ->get();
         $fyears=DB::table('financial_year')
             ->get();
+        $engineer=DB::table('profiles')
+            ->where('subsector', '=', 5)
+            ->get();
         $activity=activity::find($id);
         return view('activity.edit')->with('activitys',$activity)->with('fyears',$fyears)
+        ->with('engineer',$engineer)
         ->with('budgets',$budgets);
     }
 
@@ -147,6 +157,7 @@ class ActivityController extends Controller
             'activity' =>'required',
             'sdate' =>'required',
             'edate' =>'required',
+            'engineer' =>'required',
             'budget_line' =>'required',
             'allotted_budget' =>'required'
         ]);
@@ -157,6 +168,7 @@ class ActivityController extends Controller
         $activity->activity = $request->input('activity');
         $activity->sdate = $request->input('sdate');
         $activity->edate = $request->input('edate');
+        $activity->site_engineer = $request->input('engineer');
         $activity->budget_line = $request->input('budget_line');
         $activity->allotted_budget = $request->input('allotted_budget');
         $activity->save();

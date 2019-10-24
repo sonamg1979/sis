@@ -17,10 +17,16 @@ Route::resource('/history','HistoryController');
 Route::resource('/activity','ActivityController');
 Route::resource('/population','PopulationController');
 
+//-------Culture-------------//
+Route::resource('/culture','CultureController');
+
+//-------Primary Focus-------------//
+Route::resource('/focus','PrimaryFocusController');
 
 //-------Education-------------//
 Route::resource('/staff','SchoolStaffInfoController');
 Route::resource('/student','SchoolStudentInfoController');
+Route::resource('/school','SchoolInfraController');
 Route::get('/json-group','SchoolStudentInfoController@group'); 
 
 //---------Health-----------------//

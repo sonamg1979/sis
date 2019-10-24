@@ -62,6 +62,20 @@
                             </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Culture</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/culture/create">Add Cultural Heritage</a></li>
+                                <li><a href="/culture">View</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary Focus</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/focus/create">Add Primary Focus</a></li>
+                                <li><a href="/focus">View</a></li>
+                            </ul>
+                        </li>
                         <!---Acitivity--->
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</a>
@@ -83,6 +97,13 @@
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Education</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School Information</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/school/create">Add</a></li>
+                                <li><a href="/school">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Staff Information</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a href="/staff/create">Add</a></li>
@@ -90,12 +111,12 @@
                                 </ul>
                             </li>
                             <li class="dropright">
-                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student Information</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="/student/create">Add</a></li>
-                                    <li><a href="/student">View</a></li>
-                                    </ul>
-                                </li>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student Information</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/student/create">Add</a></li>
+                                <li><a href="/student">View</a></li>
+                                </ul>
+                            </li>
                             </ul>
                         </li>
                         <!---Health--->

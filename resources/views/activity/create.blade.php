@@ -53,6 +53,15 @@
                 {{Form::label('abudget','Allotted Budget (in million)')}}
                 {{Form::text('allotted_budget','',['class'=>'form-control','placeholder'=>'Budget Allotted'])}}
             </div>
+            <div class="form-group">
+                <label for="">Site Engineer</label>
+                <select id="engineer" name="engineer" class="form-control" required>
+                    <option value=''>Site Engineer</option>
+                    @foreach($engineer as $data)
+                        <option value="{{$data->employee_id}}">{{$data->employee_name}}</option>
+                    @endforeach
+                </select>
+            </div>
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}
     </div>
         
