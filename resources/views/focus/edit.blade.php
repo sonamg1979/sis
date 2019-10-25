@@ -8,8 +8,8 @@
 }
 </style>
     <div class="card card-body" style="max-width: 40rem;">
-        <h3>Edit Population</h3>
-        {!! Form::open(['action' => ['PopulationController@update',$focus->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+        <h3>Edit Primary Focus</h3>
+        {!! Form::open(['action' => ['PrimaryFocusController@update',$focus->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
         {{Form::label('focus','Title of Primary Focus')}}<br/>
         {{Form::text('title',$focus->title,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
         {{Form::label('focus','Description of Primary Focus')}}<br/>
@@ -18,7 +18,7 @@
         {{Form::text('budget',$focus->budget,['class'=>'form-control','id'=>'budget', 'placeholder' =>'Estimated Budget'])}}
         {{Form::label('focus','Completion Date')}}<br/>
         {{Form::date('date', $focus->complete_date, ['class'=>'form-control'])}}
-            
+        <br>
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}
     </div>

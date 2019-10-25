@@ -100,23 +100,18 @@ class PrimaryFocusController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'fyear' =>'required',
+            'title' =>'required',
+            'des' =>'required',
             'budget' =>'required',
-            'focus' =>'required',
-            'sdate' =>'required',
-            'edate' =>'required',
-            'budget_line' =>'required',
-            'allotted_budget' =>'required'
+            'date' =>'required'
         ]);
         
         $focus = PrimaryFocus::find($id);
-        $focus->f_year = $request->input('fyear');
+        $focus->subsector = session('SUBSEC');
+        $focus->title = $request->input('title');
+        $focus->description = $request->input('des');
         $focus->budget = $request->input('budget');
-        $focus->focus = $request->input('focus');
-        $focus->sdate = $request->input('sdate');
-        $focus->edate = $request->input('edate');
-        $focus->budget_line = $request->input('budget_line');
-        $focus->allotted_budget = $request->input('allotted_budget');
+        $focus->complete_date = $request->input('date');
         $focus->save();
         return redirect('/focus')->with('success','Updated successfully!!');
     }
@@ -129,7 +124,7 @@ class PrimaryFocusController extends Controller
      */
     public function destroy($id)
     {
-        $focus= focus::find($id);
+        $focus= PrimaryFocus::find($id);
         $focus->delete();
         return redirect('/focus')->with('success','Deleted successfully!!');
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrimaryFociTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePrimaryFociTable extends Migration
      */
     public function up()
     {
-        Schema::create('primary_foci', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('subsector');
             $table->year('year');
-            $table->string('title');
-            $table->string('description');
-            $table->double('budget');
-            $table->date('complete_date');
+            $table->string('events');
+            $table->date('sdate');
+            $table->date('edate');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreatePrimaryFociTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('primary_foci');
+        Schema::dropIfExists('events');
     }
 }

@@ -1,22 +1,23 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container-fluid">
         <div class="card mb-5">
                 <div class="card-header bg-info">Employee Details</div>
                 <div class="card-block p-0">
-                    <table class="table table-bordered table-sm m-0">
+                    <table class="table table-sm">
                         <thead class="">
                             <tr>
                                 <th>Sl</th>
                                 <th>Employee ID</th>
                                 <th>Employee Name</th>
                                 <th>Designation</th>
-                                <th colspan="2">Action</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
+                        <tbody> 
                         @foreach ($profiles as $row)
-                        <tbody>   
+                          
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$row->employee_id}}</td>
@@ -26,9 +27,9 @@
                                 <td><a href="/dashboard/employee_history/{{$row->employee_id}}">History</td>
 
                             </tr> 
-                        </tbody>
-                            @endforeach
                         
+                            @endforeach
+                        </tbody>
                     </table>
                     <div class="text-center"><a href="/dashboard/employee_all">View All</a></div>
                     <div class="row">
@@ -281,6 +282,7 @@
                             <a href="/dashboard/studentinfo">Student by Age-group and Class</a><br>
                             <a href="/dashboard/studentschool">Student by Age-group, School and Class</a><br>
                             <a href="/dashboard/schoolstaff">Teacher & Staff by Category and School</a>
+                            <a href="/dashboard/schoollist">School details</a>
                         </div>
                     </div>
                 </div>
@@ -323,12 +325,17 @@
                                     @foreach ($activity as $data)
                                         <li>
                                             <!--"_blank" tıklanan linkin yeni sekmede açılmasını sağlar.-->
-                                            <a target="_blank" href="/dashboard/activity_show/{{$data->id}}">{{$data->sector}}</a>
+                                            <a href="/dashboard/activity_show/{{$data->id}}">{{$data->sector}}</a>
                                             <span class="float-right">{{$data->edate}}</span>
                                             <p class="article">{{$data->activity}}</p>
                                         </li>
                                     @endforeach
-                                  <hr>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            {{$activity->links()}}
+                                        </div>
+                            
+                                    </div>
                                 </ul>
                               </div>
                             </div>
@@ -339,3 +346,13 @@
     </div>
 </div>
 @endsection
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>

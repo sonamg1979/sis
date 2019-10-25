@@ -20,6 +20,12 @@ Route::resource('/population','PopulationController');
 //-------Culture-------------//
 Route::resource('/culture','CultureController');
 
+//-------Improtant Events-------------//
+Route::resource('/events','EventsController');
+
+//-------Engineer-------------//
+Route::resource('/engineer','EngineerController');
+
 //-------Primary Focus-------------//
 Route::resource('/focus','PrimaryFocusController');
 
@@ -75,12 +81,19 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/employee_show/{token}', 'DashboardController@emp_show')->name('employee_show');
     Route::get('/employee_history/{token}', 'DashboardController@emp_history')->name('employee_history');
     Route::get('/activity_show/{token}', 'DashboardController@activity_show')->name('activity_show');
+    Route::get('/site_visit/{token}', 'DashboardController@visit_history')->name('site_visit');
+    Route::get('/activity_all', 'DashboardController@activity_show_all')->name('activity_show_all');
+    Route::get('/focus_all', 'DashboardController@focus_all')->name('focus_all');
+    Route::get('/culture_all', 'DashboardController@culture_all')->name('culture_all');
+    Route::get('/culture_show/{token}', 'DashboardController@culture_show')->name('culture_show');
+    Route::get('/schoollist', 'DashboardController@school_details')->name('school_details');
 });
 
 Route::prefix('admin')->group(function(){
     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
     Route::post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::post('/password/reset','Auth\AdminResetPasswordController@reset');
@@ -91,6 +104,7 @@ Route::prefix('super')->group(function(){
     Route::get('/login','Auth\SuperLoginController@showLoginForm')->name('super.login');
     Route::post('/login','Auth\SuperLoginController@login')->name('super.login.submit');
     Route::get('/dashboard', 'SuperController@index')->name('super.dashboard');
+    Route::get('/', 'SuperController@index')->name('super.dashboard');
     Route::get('/logout','Auth\AdminLoginController@login')->name('super.logout');
     Route::post('/password/email','Auth\SuperForgotPasswordController@sendResetLinkEmail')->name('super.password.email');
     Route::post('/password/reset','Auth\SuperResetPasswordController@reset');

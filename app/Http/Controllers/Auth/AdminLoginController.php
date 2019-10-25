@@ -35,7 +35,8 @@ class AdminLoginController extends Controller
             {
                 session([
                     'SEC' => $row->sector,
-                    'SUBSEC' => $row->subsector
+                    'SUBSEC' => $row->subsector,
+                    'EMPID' => $row->employee_id
                 ]);
             }
             return redirect()->intended(route('admin.dashboard'));

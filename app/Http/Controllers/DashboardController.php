@@ -53,11 +53,10 @@ class DashboardController extends Controller
         $activity = DB::table('activities')
             ->join('sector', 'activities.sector', '=', 'sector.id')
             ->where('f_year', '=', $fyear)
-            ->where('status', '=', 'N')
             ->orderBy('edate', 'desc')
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
             'activities.sdate', 'activities.edate', 'sector.sector', 'activities.allotted_budget')
-            ->limit(11)->get();
+            ->paginate(10);
         return view('dashboard')->with('populations',$population)
             ->with('students',$student)
             ->with('teachers',$teacher)
@@ -309,13 +308,80 @@ class DashboardController extends Controller
             ->join('sector', 'activities.sector', '=', 'sector.id')
             ->join('subsector', 'activities.subsector', '=', 'subsector.id')
             ->join('budgets', 'activities.budget', '=', 'budgets.id')
+            ->join('profiles', 'activities.site_engineer', '=', 'profiles.employee_id')
             ->where('activities.id', '=', $id)
             ->select('activities.id', 'activities.f_year', 
             'activities.activity', 'activities.budget_line', 'activities.allotted_budget', 'activities.sdate', 'activities.edate', 'activities.status',
-            'sector.sector', 'subsector.subsector', 'budgets.budget')
+            'sector.sector', 'subsector.subsector', 'budgets.budget','profiles.employee_name')
             ->get();
         //$activity=activity::find($id);
         //return $activity;
         return view('activity.general.show')->with('activitys',$activity);
+    }
+    public function visit_history($id)
+    {
+        $history = DB::table('engineers')
+            ->where('activity', '=', $id)
+            ->get();
+        //$history=history::find($id);
+        //return $history;
+        return view('activity.general.visit')->with('history',$history);
+    }
+    public function activity_show_all()
+    {
+        $activity = DB::table('activities')
+            ->join('sector', 'activities.sector', '=', 'sector.id')
+            ->join('status', 'activities.status', '=', 'status.id')
+            ->join('subsector', 'activities.subsector', '=', 'subsector.id')
+            ->join('budgets', 'activities.budget', '=', 'budgets.id')
+            ->join('profiles', 'activities.site_engineer', '=', 'profiles.employee_id')
+            ->select('activities.id', 'activities.f_year', 
+            'activities.activity', 'activities.budget_line', 'activities.allotted_budget', 'activities.sdate', 'activities.edate', 'status.status',
+            'sector.sector', 'subsector.subsector', 'budgets.budget','profiles.employee_name')
+            ->paginate(20);
+        //$activity=activity::find($id);
+        //return $activity;
+        return view('activity.general.all')->with('activitys',$activity);
+    }
+    public function focus_all()
+    {
+        $focus = DB::table('primary_foci')
+            ->join('subsector', 'subsector.id', '=', 'primary_foci.subsector')
+            ->select('primary_foci.id',  'primary_foci.title', 'primary_foci.description', 'primary_foci.budget', 'primary_foci.complete_date',
+                'subsector.subsector')
+            ->paginate(10);
+        return view('focus.general.all')->with('focus',$focus);
+    }
+    public function culture_all()
+    {
+        $infras = DB::table('cultures')
+            ->join('heritage_type','cultures.heritage_type', '=', 'heritage_type.id')
+            ->select('cultures.id','cultures.sitename','cultures.location','cultures.estdyear',
+                'heritage_type.heritage_type')
+            ->paginate(10);
+        return view('culture.general.index')->with('infras',$infras);
+    }
+    public function culture_show($id)
+    {
+        $infras = DB::table('cultures')
+            ->join('heritage_type','cultures.heritage_type', '=', 'heritage_type.id')
+            ->where('cultures.id', '=', $id)
+            ->select('cultures.id','cultures.sitename','cultures.location','cultures.estdyear','cultures.description','cultures.photo',
+                'heritage_type.heritage_type')
+            ->get();
+        return view('culture.general.show')->with('infras',$infras);
+    }
+    public function school_details()
+    {
+        //$infras = SchoolInfra::paginate(10);
+        $infras = DB::table('school_infras')
+            ->join('school_level','school_infras.schoollevel', '=', 'school_level.id')
+            ->select('school_infras.id','school_infras.schoolname','school_infras.location',
+                'school_infras.area','school_infras.estdyear','school_infras.classroom','school_infras.hall',
+                'school_infras.football','school_infras.volleyball','school_infras.basketball','school_infras.indoor',
+                'school_level.schoollevel')
+            ->get();
+        ;
+        return view('school.general.school')->with('infras',$infras);
     }
 }

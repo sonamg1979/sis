@@ -70,12 +70,26 @@
                             </ul>
                         </li>
                         <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Site Engineer</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/engineer/create">Add Site Visit</a></li>
+                                    <li><a href="/engineer">View Visit History</a></li>
+                                </ul>
+                            </li>
+                        <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary Focus</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a href="/focus/create">Add Primary Focus</a></li>
                                 <li><a href="/focus">View</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/events/create">Add New</a></li>
+                                    <li><a href="/events">View</a></li>
+                                </ul>
+                            </li>
                         <!---Acitivity--->
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</a>

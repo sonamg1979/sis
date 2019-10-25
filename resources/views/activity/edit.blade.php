@@ -58,7 +58,7 @@
                 <select id="engineer" name="engineer" class="form-control" required>
                     <option value=''>Funding</option>
                     @foreach($engineer as $data)
-                        <option value="{{$data->employee_id}}" {{($data->employee_id == $activitys->site_engineer) ? 'selected' : '' }}>{{$data->employee_id}}</option>
+                        <option value="{{$data->employee_id}}" {{($data->employee_id == $activitys->site_engineer) ? 'selected' : '' }}>{{$data->employee_name}}</option>
                     @endforeach
                 </select>
             </div>
