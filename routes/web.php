@@ -43,10 +43,18 @@ Route::resource('/morbidity','MorbidityController');
 Route::resource('/agrigeneral','AgriGeneralController');
 Route::resource('/agriproduction','AgriProductionController');
 Route::get('/json-product','AgriProductionController@product'); 
+Route::resource('/farmgroup','FarmGroupController');
+Route::resource('/agrifacility','AgriFacilityController');
+Route::resource('/landdevelopment','LandDevelopmentController');
+Route::resource('/electricfencing','ElectricFencingController');
+Route::resource('/farmroad','FarmRoadController');
+
 
 //---------Livestock-----------------//
 Route::resource('/livestockgeneral','LivestockGeneralController');
 Route::resource('/livestockproduction','LivestockProductionController');
+Route::resource('/livestockgroup','LivestockGroupController');
+Route::resource('/livestockinfra','LivestockInfraController');
 //Route::get('/json-product','AgriProductionController@product'); 
 
 //Json populate dropdown
@@ -67,16 +75,26 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/morbidity', 'DashboardController@morbidity')->name('morbidity');
     Route::get('/morbidityby', 'DashboardController@morbidityby')->name('morbidityby');
     Route::get('/studentinfo', 'DashboardController@student_info')->name('studentinfo');
+    Route::get('/studentinfoclass', 'DashboardController@student_info_class')->name('studentinfoclass');
     Route::get('/studentschool', 'DashboardController@student_sch')->name('studentschool');
+    Route::get('/studentschoolinfo', 'DashboardController@student_school')->name('studentschoolinfo');
     Route::get('/schoolstaff', 'DashboardController@student_staff')->name('studentstaff');
     Route::get('/livestockgewog', 'DashboardController@livestock_gewog')->name('livestockgewog');
     Route::get('/livestock', 'DashboardController@livestock')->name('livestock');
     Route::get('/livestockproduct', 'DashboardController@livestock_product')->name('livestock-product');
+    Route::get('/livestockinfra', 'DashboardController@livestock_infra')->name('livestockinfra');
+    Route::get('/livestockgroup', 'DashboardController@livestock_group')->name('livestockgroup');
     Route::get('/livestockproductgewog', 'DashboardController@livestock_product_gewog')->name('livestockproductgewog');
     Route::get('/agriculture', 'DashboardController@agriculture')->name('agriculture');
     Route::get('/agriculturegewog', 'DashboardController@agriculture_gewog')->name('agriculture_gewog');
     Route::get('/agricultureproduct', 'DashboardController@agriculture_product')->name('agriculture_product');
     Route::get('/agricultureproductgewog', 'DashboardController@agriculture_product_gewog')->name('agriculture_product-gewog');
+    Route::get('/agrifacilities', 'DashboardController@agri_facilities')->name('agri_facilities');
+    Route::get('/agrifarmgroup', 'DashboardController@agri_farm_group')->name('agrifarmgroup');
+    Route::get('/agriirrigation', 'DashboardController@agri_irrigation')->name('agriirrigation');
+    Route::get('/agrielectricfencing', 'DashboardController@agri_electric_fencing')->name('agrielectricfencing');
+    Route::get('/agrifarmroad', 'DashboardController@agri_farm_road')->name('agrifarmroad');
+    Route::get('/landdevelopment', 'DashboardController@agri_land_development')->name('landdevelopment');
     Route::get('/employee_all', 'DashboardController@emp_all')->name('employee_all');
     Route::get('/employee_show/{token}', 'DashboardController@emp_show')->name('employee_show');
     Route::get('/employee_history/{token}', 'DashboardController@emp_history')->name('employee_history');
@@ -119,6 +137,7 @@ Route::post('/administrator/store','SuperController@store')->name('store.adminis
 
 //Super-Admin-User
 Route::resource('/users','SuperUserController');
+Route::resource('/nusers','UserController');
 Route::get('/json-subsector','SuperUserController@sub_sector');
 
 

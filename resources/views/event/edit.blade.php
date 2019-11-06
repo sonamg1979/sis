@@ -20,7 +20,7 @@
             </select>
         </div>
         {{Form::label('focus','Events Title')}}<br/>
-            {{Form::text('title',$events->events,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
+            {{Form::text('title',$events->events,['class'=>'form-control','id'=>'title', 'placeholder' =>'Events'])}}
             {{Form::label('focus','Start Date')}}<br/>
             {{Form::date('sdate', $events->sdate, ['class'=>'form-control'])}}
             {{Form::label('focus','End Date')}}<br/>

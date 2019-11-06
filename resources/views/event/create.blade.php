@@ -22,7 +22,7 @@ color: red;
             @endfor
         </select>
             {{Form::label('focus','Events Title')}}<br/>
-            {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
+            {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Events'])}}
             {{Form::label('focus','Start Date')}}<br/>
             {{Form::date('sdate', date('Y-m-d'), ['class'=>'form-control'])}}
             {{Form::label('focus','End Date')}}<br/>

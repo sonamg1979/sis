@@ -13,7 +13,7 @@
                     <th>Sl</th>
                     <th>School Name</th>
                     <th>Location</th>
-                    <th>Year Established</th>
+                    <th>Year Estd.</th>
                     <th>School Level</th>
                     <th>Multipurpose Hall</th>
                     <th>Classroom</th>
@@ -34,9 +34,9 @@
                 <td>{{$row->schoollevel}}</td>
                 <td>{{$row->hall}}</td>
                 <td>{{$row->classroom}}</td>
-                <td>{{$row->football}}</td>
-                <td>{{$row->volleyball}}</td>
-                <td>{{$row->basketball}}</td>
+                <td>{{($row->football=='Y') ? 'Yes': 'No'}}</td>
+                <td>{{($row->volleyball=='Y') ? 'Yes': 'No'}}</td>
+                <td>{{($row->basketball=='Y') ? 'Yes': 'No'}}</td>
                 <td>{{$row->indoor}}</td>
             </tr>
             @endforeach

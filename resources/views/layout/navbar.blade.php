@@ -31,6 +31,7 @@
         .navbar-nav .show .dropdown-menu .dropdown-menu > li > a{padding:16px 15px 16px 35px}
         .navbar-nav .show .dropdown-menu .dropdown-menu .dropdown-menu > li > a{padding:16px 15px 16px 45px}
         }
+
     </style>
 <div class="small-top">
     <div class="container">
@@ -52,30 +53,25 @@
                 <h3 class="text-primary">Chhoetse Dzong: Trongsa</center></h3>
             </div>
             <div class="col-md-6 col-lg-3 ml-auto admin-bar hidden-sm-down">
-                    <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name}} <span class="caret"></span>
-                                    </a>
+                                    <h5>
+                                        {{ Auth::user()->name}}</span>
+                                    </h5>
             
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="logout"
-                                           onclick="event.preventDefault();
+                                    <div>
+                                        <button><a class="dropdown-item" href="logout"
                                                          document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
-                                        </a>
+                                        </a></button>
             
                                         <form id="logout-form" action="logout" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                         
                                     </div>
-                                </li>
                             @endguest
-                        </ul>
             </div>
         </div>
     </div>
@@ -92,14 +88,52 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demographic</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/dashboard/populationage">Population by Age-group</a></li>
+                                    <li><a href="/dashboard/populationplace">Population by Age-group and Place</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Education</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/dashboard/studentinfoclass">Student by Class</a></li>
+                                    <li><a href="/dashboard/studentinfo">Student by Class & age-group</a></li>
+                                    <li><a href="/dashboard/studentschoolinfo">Student by School</a></li>
+                                    <li><a href="/dashboard/studentschool">Overall Student by class</a></li>
+                                    <li><a href="/dashboard/schoolstaff">Teacher & Staff by School</a></li>
+                                    <li><a href="/dashboard/schoollist">Schools details</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agriculture</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/dashboard/agrifacilities">Facilities</a></li>
+                                    <li><a href="/dashboard/agrifarmgroup">Farm group</a></li>
+                                    <li><a href="/dashboard/agriirrigation">Irrigation</a></li>
+                                    <li><a href="/dashboard/agrifarmroad">Farm Road</a></li>
+                                    <li><a href="/dashboard/agrielectricfencing">Electrical/Solar Fencing</a></li>
+                                    <li><a href="/dashboard/agricultureproduct">Crop Production</a></li>
+                                    <li><a href="/dashboard/landdevelopment">Land Development</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Livestock</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/dashboard/livestockinfra">Infrastructure</a></li>
+                                    <li><a href="/dashboard/livestockgroup">Farmers group and Cooperatives</a></li>
+                                    <li><a href="/dashboard/livestockproduct">Livestock Product </a></li>
+                                </ul>
+                            </li>
                             <li><a href="/dashboard/activity_all">Activities <span class="sr-only"></span></a></li>
                             <li><a href="/dashboard/focus_all">Primary Focus <span class="sr-only"></span></a></li>
                             <li><a href="/dashboard/culture_all">Cultural & Heritage <span class="sr-only"></span></a></li>
                             {{--<li class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Major Activity</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="/users/create">By Age-group</a></li>
-                                    <li><a href="/users">Age-group and Gewog</a></li>
+                                    <li><a href="/dashboard/create">By Age-group</a></li>
+                                    <li><a href="/dashboard">Age-group and Gewog</a></li>
                                 </ul>
                             </li>---}}
                         </ul>

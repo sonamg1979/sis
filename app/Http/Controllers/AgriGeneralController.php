@@ -28,8 +28,16 @@ class AgriGeneralController extends Controller
     public function index()
     {
         $info = DB::table('agrigenerals')
+            ->join('construct_types', 'agrigenerals.construct_type', '=', 'construct_types.id')
+            ->join('construct_modes', 'agrigenerals.construct_mode', '=', 'construct_modes.id')
+            ->join('chennel_types', 'agrigenerals.chennel_type', '=', 'chennel_types.id')
             ->where('subsector', '=', session('SUBSEC'))
+            ->select('agrigenerals.id', 'agrigenerals.location', 'agrigenerals.length', 
+            'agrigenerals.benefeciaries', 'agrigenerals.area', 'agrigenerals.year',
+            'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female',
+            'agrigenerals.status', 'construct_modes.construct_mode', 'construct_types.construct_type','chennel_types.chennel_type')
             ->paginate(10);
+        
         return view('agriculture.general.index')->with('datas',$info);
     }
 
@@ -40,7 +48,16 @@ class AgriGeneralController extends Controller
      */
     public function create()
     {
-        return view('agriculture.general.create');
+        $modes = DB::table('construct_modes')
+            ->get();
+        $types = DB::table('construct_types')
+            ->get();
+        $ctypes = DB::table('chennel_types')
+            ->get();
+        return view('agriculture.general.create')
+        ->with('modes',$modes)
+        ->with('types',$types)
+        ->with('ctypes',$ctypes);
     }
 
     /**
@@ -53,21 +70,32 @@ class AgriGeneralController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
+            'location' =>'required',
+            'length' =>'required',
+            'hh' =>'required',
+            'area' =>'required',
+            'mode' =>'required',
+            'type' =>'required',
+            'ctype' =>'required',
+            'association' =>'required',
+            'status' =>'required',
         ]);
 
         $info = new Agrigeneral;
         $info->subsector = session('SUBSEC');
         $info->year = $request->input('year');
-        $info->dry = $request->input('dry');
-        $info->wet = $request->input('wet');
-        $info->orchad = $request->input('orchad');
-        $info->f_irrigation = $request->input('f_irrigation');
-        $info->n_irrigation = $request->input('n_irrigation');
-        $info->l_irrigation = $request->input('l_irrigation');
-        $info->area_irrigation = $request->input('area_irrigation');
-        $info->benefit_irrigation = $request->input('benefit_irrigation');
-        $info->processing_unit = $request->input('processing_unit');
-        $info->mills = $request->input('mills');
+        $info->location = $request->input('location');
+        $info->length = $request->input('length');
+        $info->benefeciaries = $request->input('hh');
+        $info->area = $request->input('area');
+        $info->construct_mode = $request->input('mode');
+        $info->construct_type = $request->input('type');
+        $info->chennel_type = $request->input('ctype');
+        $info->associations = $request->input('association');
+        $info->male = $request->input('male');
+        $info->female = $request->input('female');
+        $info->status = $request->input('status');
+        $info->remarks = $request->input('remarks');
         $info->save();
         return redirect('/agrigeneral')->with('success','Saved successfully!!');
     }
@@ -91,9 +119,17 @@ class AgriGeneralController extends Controller
      */
     public function edit($id)
     {
-  
+        $modes = DB::table('construct_modes')
+            ->get();
+        $types = DB::table('construct_types')
+            ->get();
+        $ctypes = DB::table('chennel_types')
+            ->get();
         $info=Agrigeneral::find($id);
-        return view('agriculture.general.edit')->with('infos',$info);
+        return view('agriculture.general.edit')->with('infos',$info)
+        ->with('modes',$modes)
+        ->with('types',$types)
+        ->with('ctypes',$ctypes);
     }
 
     /**
@@ -107,21 +143,32 @@ class AgriGeneralController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
+            'location' =>'required',
+            'length' =>'required',
+            'hh' =>'required',
+            'area' =>'required',
+            'mode' =>'required',
+            'type' =>'required',
+            'ctype' =>'required',
+            'association' =>'required',
+            'status' =>'required',
         ]);
         
         $info = Agrigeneral::find($id);
         $info->subsector = session('SUBSEC');
         $info->year = $request->input('year');
-        $info->dry = $request->input('dry');
-        $info->wet = $request->input('wet');
-        $info->orchad = $request->input('orchad');
-        $info->f_irrigation = $request->input('f_irrigation');
-        $info->n_irrigation = $request->input('n_irrigation');
-        $info->l_irrigation = $request->input('l_irrigation');
-        $info->area_irrigation = $request->input('area_irrigation');
-        $info->benefit_irrigation = $request->input('benefit_irrigation');
-        $info->processing_unit = $request->input('processing_unit');
-        $info->mills = $request->input('mills');
+        $info->location = $request->input('location');
+        $info->length = $request->input('length');
+        $info->benefeciaries = $request->input('hh');
+        $info->area = $request->input('area');
+        $info->construct_mode = $request->input('mode');
+        $info->construct_type = $request->input('type');
+        $info->chennel_type = $request->input('ctype');
+        $info->associations = $request->input('associations');
+        $info->male = $request->input('male');
+        $info->female = $request->input('female');
+        $info->status = $request->input('status');
+        $info->remarks = $request->input('remarks');
         $info->save();
         return redirect('/agrigeneral')->with('success','Updated successfully!!');
     }

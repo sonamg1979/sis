@@ -12,63 +12,91 @@ color: red;
 }
 </style>
     <div class="card card-body" style="max-width: 40rem;">
-        <h3>Data Entry: General Information</h3><hr>
+        <h3>Data Entry: Irrigation Information</h3><hr>
         {!! Form::open(['action' => 'AgriGeneralController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
-                <label for="">Year</label>
+                <label for="">Construction Year</label>
                 <select id="year" name="year" class="form-control" required>
                     <option value=''>Year</option>
-                    @for($yr=now()->year-3; $yr<=now()->year; $yr++)
+                    @for($yr=now()->year-10; $yr<=now()->year; $yr++)
                         <option value="{{$yr}}">{{$yr}}</option>
                     @endfor
                 </select>
             </div>
-            <center><strong>{{Form::label('staff','General Information')}}</strong></center>
+            {{Form::label('location','Location of Channel')}}
+            {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Location'])}}
+            <center><strong>{{Form::label('staff','Chennel Information')}}</strong></center>
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
-                    {{Form::label('dry','Total Dry Land(Hectares)')}}
-                    {{Form::text('dry',0,['class'=>'form-control','id'=>'dry', 'placeholder' =>'0'])}}
+                    {{Form::label('length','Length of chennel(KM)')}}
+                    {{Form::text('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
                 </div>
                 <div class="form-group col-md-4">
-                    {{Form::label('wet','Total Wet Land(Hectares)')}}
-                    {{Form::text('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'0'])}}
+                    {{Form::label('hh','Benefeciaries household(No.)')}}
+                    {{Form::text('hh',0,['class'=>'form-control','id'=>'hh', 'placeholder' =>'Benefeciaries'])}}
                 </div> 
                 <div class="form-group col-md-4">
-                    {{Form::label('orchad','Total Orchard(Hectares)')}}
-                    {{Form::text('orchad',0,['class'=>'form-control','id'=>'orchad', 'placeholder' =>'0'])}}
+                    {{Form::label('area','Command area (Acre)')}}
+                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
                 </div>    
             </div> 
             <div class="form-row border" style="color:coral">
-                <div class="form-group col-md-3">
-                    {{Form::label('irrigation','Functional Irrigation Channel')}}
-                    {{Form::text('f_irrigation',0,['class'=>'form-control','id'=>'f_irrigation', 'placeholder' =>'0'])}}
+                <div class="form-group col-md-4">
+                    {{Form::label('mode','Mode of Construction')}}
+                    <select id="mode" name="mode" class="form-control" required>
+                        <option value=''>Mode</option>
+                        @foreach($modes as $mode)
+                            <option value="{{$mode->id}}">{{$mode->construct_mode}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="form-group col-md-3">
-                    {{Form::label('irrigation','Non-functional Irrigation Channel')}}
-                    {{Form::text('n_irrigation',0,['class'=>'form-control','id'=>'n_irrigation', 'placeholder' =>'0'])}}
+                <div class="form-group col-md-4">
+                    {{Form::label('type','Type of Construction')}}
+                    <select id="type" name="type" class="form-control" required>
+                        <option value=''>Construct Type</option>
+                        @foreach($types as $type)
+                            <option value="{{$type->id}}">{{$type->construct_type}}</option>
+                        @endforeach
+                    </select>
                 </div> 
-                <div class="form-group col-md-3">
-                    {{Form::label('irrigation','Total length of channels (km)')}}
-                    {{Form::text('l_irrigation',0,['class'=>'form-control','id'=>'l_irrigation', 'placeholder' =>'0'])}}
-                </div>  
-                <div class="form-group col-md-3">
-                    {{Form::label('irrigation','Area covered by irrigation (acres)')}}
-                    {{Form::text('area_irrigation',0,['class'=>'form-control','id'=>'area_irrigation', 'placeholder' =>'0'])}}
-                </div>  
+                <div class="form-group col-md-4">
+                    {{Form::label('chennel','Type of channels')}}
+                    <select id="ctype" name="ctype" class="form-control" required>
+                        <option value=''>Chennel Type</option>
+                        @foreach($ctypes as $row)
+                            <option value="{{$row->id}}">{{$row->chennel_type}}</option>
+                        @endforeach
+                    </select>
+                </div>   
             </div> 
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
-                    {{Form::label('irrigation','Households benefitted by irrigation')}}
-                    {{Form::text('benefit_irrigation',0,['class'=>'form-control','id'=>'benefit_irrigation', 'placeholder' =>'0'])}}
-                </div>
-                <div class="form-group col-md-3">
-                    {{Form::label('processing','No. of food processing units')}}
-                    {{Form::text('processing_unit',0,['class'=>'form-control','id'=>'processing_unit', 'placeholder' =>'0'])}}
+                    {{Form::label('association','Water user association')}}<br/>
+                    {{Form::radio('association', 'Y', ['class'=>'form-control'])}} Yes
+                    {{Form::radio('association', 'N', ['class'=>'form-control'])}} No 
                 </div> 
-                <div class="form-group col-md-3">
-                    {{Form::label('mills','Number of agriculture mills')}}
-                    {{Form::text('mills',0,['class'=>'form-control','id'=>'mills', 'placeholder' =>'0'])}}
-                </div>                  
+                <div class="form-group col-md-2">
+                    {{Form::label('male','Males')}}
+                    {{Form::text('male',0,['class'=>'form-control','id'=>'male', 'placeholder' =>'0'])}}
+                </div> 
+                <div class="form-group col-md-2">
+                    {{Form::label('female','Females')}}
+                    {{Form::text('female',0,['class'=>'form-control','id'=>'female', 'placeholder' =>'0'])}}
+                </div>
+                <div class="form-group col-md-4">
+                    {{Form::label('status','Status of channel')}}
+                    <select id="status" name="status" class="form-control" required>
+                        <option value=''>Status</option>
+                            <option value="F">Functional</option>
+                            <option value="N">Non-functional</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row border">
+                <div class="form-group col-md-12">
+                    <center><strong>{{Form::label('Remarks','Remarks')}}</strong></center>
+                    <textarea rows="4", cols="54" class="form-control" id="remarks" name="remarks" style="resize:none, "></textarea>                 
+                </div>
             </div> 
             <br>
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}
@@ -82,8 +110,7 @@ color: red;
 <script type="text/javascript">
     $(document).ready(function () {
         //called when key is pressed in textbox
-
-        $("#f_irrigation").keypress(function (e) {
+        $("#male").keypress(function (e) {
             //if the letter is not digit then display error and don't type anything
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 //display error message
@@ -91,7 +118,7 @@ color: red;
                     return false;
             }
         });
-        $("#n_irrigation").keypress(function (e) {
+        $("#female").keypress(function (e) {
             //if the letter is not digit then display error and don't type anything
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 //display error message
@@ -99,7 +126,7 @@ color: red;
                     return false;
             }
         });
-        $("#benefit_irrigation").keypress(function (e) {
+        $("#area").keypress(function (e) {
             //if the letter is not digit then display error and don't type anything
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 //display error message
@@ -107,7 +134,7 @@ color: red;
                     return false;
             }
         });
-        $("#processing_unit").keypress(function (e) {
+        $("#hh").keypress(function (e) {
             //if the letter is not digit then display error and don't type anything
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 //display error message
@@ -115,15 +142,6 @@ color: red;
                     return false;
             }
         });
-        $("#mills").keypress(function (e) {
-            //if the letter is not digit then display error and don't type anything
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                //display error message
-                $("#errmsg").html("Digits Only").show().fadeOut("slow");
-                    return false;
-            }
-        });
-
     })
      
 </script>

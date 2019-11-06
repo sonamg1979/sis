@@ -62,20 +62,24 @@
                             </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Culture</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="/culture/create">Add Cultural Heritage</a></li>
-                                <li><a href="/culture">View</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
+                        @if(session('SEC')==1 && session('SUBSEC')==4)
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Culture</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/culture/create">Add Cultural Heritage</a></li>
+                                    <li><a href="/culture">View</a></li>
+                                </ul>
+                            </li>
+                        @endif
+                        @if(session('SEC')==1 && session('SUBSEC')==5)
+                            <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Site Engineer</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a href="/engineer/create">Add Site Visit</a></li>
                                     <li><a href="/engineer">View Visit History</a></li>
                                 </ul>
                             </li>
+                            @endif
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary Focus</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,6 +103,7 @@
                             </ul>
                         </li>
                         <!---Population--->
+                        @if(session('SEC')==2)
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Population</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -106,7 +111,9 @@
                                 <li><a href="/population">View</a></li>
                             </ul>
                         </li>
+                        @endif
                         <!---Education--->
+                        @if(session('SEC')==5)
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Education</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -133,7 +140,9 @@
                             </li>
                             </ul>
                         </li>
+                        @endif
                         <!---Health--->
+                        @if(session('SEC')==6)
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Health</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -153,35 +162,81 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
                         <!---Agriculture--->
+                        @if(session('SEC')==3)
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agriculture</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li class="dropright">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">General Information</a>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Irrigation Channel Information</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a href="/agrigeneral/create">Add</a></li>
                                 <li><a href="/agrigeneral">View</a></li>
                                 </ul>
                             </li>
                             <li class="dropright">
-                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Production Details</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="/agriproduction/create">Add</a></li>
-                                    <li><a href="/agriproduction">View</a></li>
-                                    </ul>
-                                </li>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Crop/Productions</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/agriproduction/create">Add</a></li>
+                                <li><a href="/agriproduction">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Farm Group</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/farmgroup/create">Add</a></li>
+                                <li><a href="/farmgroup">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Land holding & Facilities</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/agrifacility/create">Add</a></li>
+                                <li><a href="/agrifacility">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Farm Road</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/farmroad/create">Add</a></li>
+                                <li><a href="/farmroad">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electric Fencing</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/electricfencing/create">Add</a></li>
+                                <li><a href="/electricfencing">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Land Development</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/landdevelopment/create">Add</a></li>
+                                <li><a href="/landdevelopment">View</a></li>
+                                </ul>
+                            </li>
                             </ul>
                         </li>
+                        @endif
                         <!---Livestock--->
+                        @if(session('SEC')==4)
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Livestock</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="dropright">
+                                        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Farmers group and Cooperatives</a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a href="/livestockgroup/create">Add</a></li>
+                                        <li><a href="/livestockgroup">View</a></li>
+                                        </ul>
+                                    </li>
                             <li class="dropright">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">General Information</a>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">livestock infrastructure</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="/livestockgeneral/create">Add</a></li>
-                                <li><a href="/livestockgeneral">View</a></li>
+                                <li><a href="/livestockinfra/create">Add</a></li>
+                                <li><a href="/livestockinfra">View</a></li>
                                 </ul>
                             </li>
                             <li class="dropright">
@@ -193,6 +248,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

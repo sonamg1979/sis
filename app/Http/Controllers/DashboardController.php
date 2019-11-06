@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Population;
 use DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -28,40 +29,36 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
         $fyear=session('sess_Year').'-'.(session('sess_Year')+1);
-        $population = DB::table('populations')
-            ->where('year', '=', session('sess_Year'))
-            ->get();
-        $student = DB::table('school_student_infos')
-            ->where('year', '=', session('sess_Year'))
-            ->get();
-        $teacher = DB::table('schoolstaffinfos')
-            ->where('year', '=', session('sess_Year'))
-            ->get();
-        $health = DB::table('general_infos')
-            ->where('year', '=', session('sess_Year'))
-            ->get();
+        $month=Carbon::now()->format('m');
+        $events = DB::table('events')
+            ->join('subsector', 'events.subsector', '=', 'subsector.id')
+            ->where('events.sdate', '>=', now())
+            ->orderBy('events.sdate','asc')
+            ->select('events.id', 'events.events', 
+            'events.sdate', 'events.edate', 'subsector.subsector')
+            ->paginate(10);
         $profile = DB::table('profiles')
             ->join('sector', 'profiles.sector', '=', 'sector.id')
             ->join('subsector', 'profiles.subsector', '=', 'subsector.id')
             ->join('designations', 'profiles.designation', '=', 'designations.id')
             ->join('qualifications', 'profiles.qualification', '=', 'qualifications.id')
+            ->orderBy('designations.position','asc')
             ->select('profiles.employee_id', 'profiles.employee_name', 
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
             ->paginate(5);
         $activity = DB::table('activities')
-            ->join('sector', 'activities.sector', '=', 'sector.id')
+            ->join('sector', 'activities.sector', '>=', 'sector.id')
             ->where('f_year', '=', $fyear)
             ->orderBy('edate', 'desc')
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
             'activities.sdate', 'activities.edate', 'sector.sector', 'activities.allotted_budget')
             ->paginate(10);
-        return view('dashboard')->with('populations',$population)
-            ->with('students',$student)
-            ->with('teachers',$teacher)
+        return view('dashboard')
             ->with('activity',$activity)
-            ->with('healths',$health)
+            ->with('events',$events)
             ->with('profiles',$profile);
     }
     public function populationage()
@@ -149,20 +146,43 @@ class DashboardController extends Controller
             ->get();
             return view('school.general.std-info')->with('students',$students);
     }
+    public function student_info_class()
+    {
+        $students = DB::table('school_student_infos')
+            ->join('class', 'school_student_infos.class', '=', 'class.id')
+            ->join('student_ages', 'school_student_infos.agerange', '=', 'student_ages.id')
+            ->where('school_student_infos.year', '=', session('sess_Year'))
+            ->orderBy('class.id')
+            ->groupBy('school_student_infos.class')
+            ->select('school_student_infos.id', 'school_student_infos.year', 
+            DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'),
+            'class.class')
+            ->get();
+            return view('school.general.std-info-class')->with('students',$students);
+    }
     public function student_sch()
     {
         $students = DB::table('school_student_infos')
             ->join('subsector', 'school_student_infos.subsector', '=', 'subsector.id')
             ->join('class', 'school_student_infos.class', '=', 'class.id')
-            ->join('student_ages', 'school_student_infos.agerange', '=', 'student_ages.id')
             ->where('school_student_infos.year', '=', session('sess_Year'))
             ->orderBy('school_student_infos.class')
-            ->groupBy('school_student_infos.agerange')
+            ->groupBy('school_student_infos.class')
             ->select('school_student_infos.id', 'school_student_infos.year', 'subsector.subsector',
             DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'),
-            'class.class', 'student_ages.age')
+            'class.class')
             ->get();
             return view('school.general.std-info-sch')->with('students',$students);
+    }
+    public function student_school()
+    {
+        $students = DB::table('school_student_infos')
+            ->join('subsector', 'school_student_infos.subsector', '=', 'subsector.id')
+            ->where('school_student_infos.year', '=', session('sess_Year'))
+            ->select('school_student_infos.id', 'school_student_infos.year', 'subsector.subsector',
+            DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'))
+            ->get();
+            return view('school.general.std-info-school')->with('students',$students);
     }
     public function student_staff()
     {
@@ -268,6 +288,7 @@ class DashboardController extends Controller
             ->join('subsector', 'profiles.subsector', '=', 'subsector.id')
             ->join('designations', 'profiles.designation', '=', 'designations.id')
             ->join('qualifications', 'profiles.qualification', '=', 'qualifications.id')
+            ->orderBy('designations.position','asc')
             ->select('profiles.employee_id', 'profiles.employee_name', 
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
@@ -383,5 +404,87 @@ class DashboardController extends Controller
             ->get();
         ;
         return view('school.general.school')->with('infras',$infras);
+    }
+    public function agri_facilities()
+    {
+        $activity = DB::table('agri_facilities')
+            ->join('subsector', 'agri_facilities.subsector', '=', 'subsector.id')
+            ->select('agri_facilities.id', DB::raw('sum(agri_facilities.wet) as wet, sum(agri_facilities.c_wet) as c_wet,
+            sum(agri_facilities.dry) as dry, sum(agri_facilities.C_dry) as c_dry,sum(agri_facilities.orchard) as orchard,
+            sum(agri_facilities.c_orchard) as c_orchard, sum(agri_facilities.food_processing) as food_processing,
+            sum(agri_facilities.mills) as mills, sum(agri_facilities.tradition_mills) as tradition_mills,
+            sum(agri_facilities.oil_expeller) as oil_expeller, sum(agri_facilities.corn_flake) as corn_flake,
+            sum(agri_facilities.electric_dryer) as electric_dryer, sum(agri_facilities.potatoe_fryer) as potatoe_fryer,
+            sum(agri_facilities.power_tiller) as power_tiller, sum(agri_facilities.tractor) as tractor,
+            sum(agri_facilities.transplanter) as transplanter, sum(agri_facilities.grass_cutter) as grass_cutter,
+            sum(agri_facilities.green_house) as green_house'))
+            ->get();
+        return view('agriculture.general.facilities')->with('activitys',$activity);
+    }
+    public function agri_farm_group()
+    {
+        $activity = DB::table('farm_groups')
+            ->join('subsector', 'farm_groups.subsector', '=', 'subsector.id')
+            ->orderBy('farm_groups.year', 'asc')
+            ->get();
+        return view('agriculture.general.farm_group')->with('datas',$activity);
+    }
+    public function agri_irrigation()
+    {
+        $info = DB::table('agrigenerals')
+            ->join('construct_types', 'agrigenerals.construct_type', '=', 'construct_types.id')
+            ->join('construct_modes', 'agrigenerals.construct_mode', '=', 'construct_modes.id')
+            ->join('chennel_types', 'agrigenerals.chennel_type', '=', 'chennel_types.id')
+            ->select('agrigenerals.id', 'agrigenerals.location', 'agrigenerals.length', 
+            'agrigenerals.benefeciaries', 'agrigenerals.area', 'agrigenerals.year',
+            'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female',
+            'agrigenerals.status', 'construct_modes.construct_mode', 'construct_types.construct_type','chennel_types.chennel_type')
+            ->paginate(10);
+        return view('agriculture.general.irrigation')->with('datas',$info);
+    }
+    public function agri_farm_road()
+    {
+        $info = DB::table('farm_roads')
+            ->join('construct_types', 'farm_roads.construct_type', '=', 'construct_types.id')
+            ->join('construct_modes', 'farm_roads.construct_mode', '=', 'construct_modes.id')
+            ->select('farm_roads.id', 'farm_roads.road_name', 'farm_roads.chiwog', 'farm_roads.length', 
+            'farm_roads.benefeciaries', 'farm_roads.year',
+            'farm_roads.group', 'farm_roads.male', 'farm_roads.female',
+            'farm_roads.status', 'construct_modes.construct_mode', 'construct_types.construct_type')
+            ->get();
+        return view('agriculture.general.farm_road')->with('datas',$info);
+    }
+    public function agri_electric_fencing()
+    {
+        $info = DB::table('electric_fencings')
+            ->join('status', 'electric_fencings.status', '=', 'status.id')
+            ->join('fencing_type', 'electric_fencings.type', '=', 'fencing_type.id')
+            ->select('electric_fencings.id', 'electric_fencings.location', 'electric_fencings.year', 
+            'electric_fencings.beneficiaries', 'electric_fencings.wet', 'electric_fencings.dry',
+            'electric_fencings.length', 'electric_fencings.remarks', 'status.status', 'fencing_type.type')
+            ->get();
+        return view('agriculture.general.electric_fencing')->with('datas',$info);
+    }
+    public function agri_land_development()
+    {
+        $info = DB::table('land_developments')
+        ->get();
+        return view('agriculture.general.land_development')->with('datas',$info);
+    }
+    public function livestock_infra()
+    {
+        $group = DB::table('livestock_infras')
+        ->select(DB::raw('sum(livestock_infras.ais) as ais, sum(livestock_infras.biogas) as biogas,
+        sum(livestock_infras.poultry_micro) as poultry_micro, sum(livestock_infras.poultry_commercial) as poultry_commercial,
+        sum(livestock_infras.poultry_broiler) as poultry_broiler, sum(livestock_infras.diary_micro) as diary_micro,
+        sum(livestock_infras.diary_commercial) as diary_commercial, sum(livestock_infras.milk_processing) as milk_processing'))
+        ->get();
+        return view('livestock.view.infra')->with('datas',$group);
+    }
+    public function livestock_group()
+    {
+        $info = DB::table('livestock_groups')
+        ->get();
+        return view('livestock.view.group')->with('datas',$info);
     }
 }

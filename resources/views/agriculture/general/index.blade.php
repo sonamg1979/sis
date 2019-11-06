@@ -11,32 +11,34 @@
             <tr>
                 <th>Sl</th>
                 <th>Year</th>
-                <th>Wet</th>
-                <th>Dry</th>
-                <th>Orch.</th>
-                <th>Fun-Irri</th>
-                <th>Nonfun-Irri</th>
-                <th>Len-Irri</th>
-                <th>Area-Irri</th>
-                <th>Benefit-Irri</th>
-                <th>Pro.Unit</th>
-                <th>Mills</th>
+                <th>Location</th>
+                <th>Existing length (KM)</th>
+                <th>Benefeciaries (HH)</th>
+                <th>Command area (Ac)</th>
+                <th>Construction Mode</th>
+                <th>Construction Type</th>
+                <th>Chennel Type</th>
+                <th>Association</th>
+                <th>Male</th>
+                <th>Female</th>
+                <th>Status</th>
                 <th colspan="2">Action</th>
             </tr>
             @foreach ($datas as $row)
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
-                    <td>{{$row->dry}}</td>
-                    <td>{{$row->wet}}</td>
-                    <td>{{$row->orchad}}</td>
-                    <td>{{$row->f_irrigation}}</td>
-                    <td>{{$row->n_irrigation}}</td>
-                    <td>{{$row->l_irrigation}}</td>
-                    <td>{{$row->area_irrigation}}</td>
-                    <td>{{$row->benefit_irrigation}}</td>
-                    <td>{{$row->processing_unit}}</td>
-                    <td>{{$row->mills}}</td>
+                    <td>{{$row->location}}</td>
+                    <td>{{$row->length}}</td>
+                    <td>{{$row->benefeciaries}}</td>
+                    <td>{{$row->area}}</td>
+                    <td>{{$row->construct_mode}}</td>
+                    <td>{{$row->construct_type}}</td>
+                    <td>{{$row->chennel_type}}</td>
+                    <td>{{$row->associations}}</td>
+                    <td>{{$row->male}}</td>
+                    <td>{{$row->female}}</td>
+                    <td>{{$row->status}}</td>
                     <td><a href="/agrigeneral/{{$row->id}}/edit" class="btn btn-sm btn-primary">Edit</td>
                     <td>
                         {!!Form::open(['action'=>['AgriGeneralController@destroy',$row->id],'method'=>'POST','class'=>'pull-right'])!!}

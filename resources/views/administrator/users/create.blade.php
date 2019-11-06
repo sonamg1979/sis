@@ -1,4 +1,4 @@
-@extends('layout.header')
+@extends('layouts.super-app')
 @section('content')
 <style>
     .card {
@@ -7,14 +7,13 @@
     margin-bottom: 10px; /* Added */
 }
 </style>
-    <br> 
     <div class="card card-body" style="max-width: 40rem;">
         <h3>New Administrator</h3><hr>
         {!! Form::open(['action' => 'SuperUserController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="">Sector</label>
-                <select id="sect" name="sect" class="form-control" required>
+                <select id="sector" name="sector" class="form-control" required>
                     <option value=''>Select Sector</option>
                     @foreach($sector as $sectors)
                         <option value="{{$sectors->id}}">{{$sectors->sector}}</option>
@@ -56,7 +55,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready( function () {
-        $("#sect").on('change',function(e){
+        $("#sector").on('change',function(e){
             console.log(e);
             var sector_id = e.target.value;
             $.get('/json-subsector?sector_id=' + sector_id, function(data){

@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.26-MariaDB)
-# Date: 2019-10-25 12:20:03
+# Date: 2019-11-05 22:02:15
 # Generator: MySQL-Front 6.1  (Build 1.16)
 
 
@@ -52,13 +52,13 @@ CREATE TABLE `admins` (
   `employee_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admins_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "admins"
 #
 
-INSERT INTO `admins` VALUES (1,'Admin','admin@gmail.com',NULL,'$2y$10$vnd.OeY/SzUev2gCTi8bz.910AcGDOEDLo5rSm6q1yyLycZznaARC',1,5,NULL,NULL,NULL,'200107136'),(2,'Testimonial','sgyeltshen@bcsea.bt',NULL,'$2y$10$Vw0iGLW2R/qPMr.z1W3fCOKK9jEyHll0iL.2KlsPjYyRjSTM3Lj2m',1,1,NULL,'2019-09-04 06:41:20','2019-09-04 06:41:20','');
+INSERT INTO `admins` VALUES (1,'Admin','admin@gmail.com',NULL,'$2y$10$vnd.OeY/SzUev2gCTi8bz.910AcGDOEDLo5rSm6q1yyLycZznaARC',1,5,NULL,NULL,NULL,'200107136'),(2,'Testimonial','sgyeltshen@bcsea.bt',NULL,'$2y$10$Vw0iGLW2R/qPMr.z1W3fCOKK9jEyHll0iL.2KlsPjYyRjSTM3Lj2m',1,1,NULL,'2019-09-04 06:41:20','2019-09-04 06:41:20',''),(3,'hooo','abc@abc.com',NULL,'ssss',1,2,NULL,'2019-11-05 14:20:30','2019-11-05 14:20:30','');
 
 #
 # Structure for table "age_groups"
@@ -80,6 +80,43 @@ CREATE TABLE `age_groups` (
 INSERT INTO `age_groups` VALUES (1,'0-4',NULL,NULL),(2,'5-9',NULL,NULL),(3,'10-14',NULL,NULL),(4,'15-19',NULL,NULL),(5,'20-24',NULL,NULL),(6,'25-29',NULL,NULL),(7,'30-34',NULL,NULL),(8,'35-39',NULL,NULL),(9,'40-44',NULL,NULL),(10,'45-49',NULL,NULL),(11,'50-54',NULL,NULL),(12,'55-59',NULL,NULL),(13,'60-64',NULL,NULL),(14,'65-69',NULL,NULL),(15,'70-74',NULL,NULL),(16,'75+',NULL,NULL);
 
 #
+# Structure for table "agri_facilities"
+#
+
+DROP TABLE IF EXISTS `agri_facilities`;
+CREATE TABLE `agri_facilities` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `subsector` int(11) NOT NULL,
+  `wet` double(15,2) NOT NULL,
+  `c_wet` double(15,2) NOT NULL,
+  `dry` double(15,2) NOT NULL,
+  `c_dry` double(15,2) NOT NULL,
+  `orchard` double(15,2) NOT NULL,
+  `c_orchard` double(15,2) NOT NULL,
+  `food_processing` int(11) NOT NULL,
+  `mills` int(11) NOT NULL,
+  `tradition_mills` int(11) NOT NULL,
+  `oil_expeller` int(11) NOT NULL,
+  `corn_flake` int(11) NOT NULL,
+  `electric_dryer` int(11) NOT NULL,
+  `potatoe_fryer` int(11) NOT NULL,
+  `power_tiller` int(11) NOT NULL,
+  `tractor` int(11) NOT NULL DEFAULT '0',
+  `transplanter` int(11) NOT NULL DEFAULT '0',
+  `grass_cutter` int(11) NOT NULL,
+  `green_house` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "agri_facilities"
+#
+
+INSERT INTO `agri_facilities` VALUES (1,5,256.00,250.00,250.00,250.00,200.00,230.00,1,1,1,0,0,1,1,1,2,2,1,5,'2019-11-05 11:37:58','2019-11-05 11:37:58');
+
+#
 # Structure for table "agricategories"
 #
 
@@ -96,7 +133,7 @@ CREATE TABLE `agricategories` (
 # Data for table "agricategories"
 #
 
-INSERT INTO `agricategories` VALUES (1,'Crops',NULL,NULL),(2,'Fruits and Nuts',NULL,NULL),(3,'Spices & Oilseeds',NULL,NULL);
+INSERT INTO `agricategories` VALUES (1,'Cereal Crops',NULL,NULL),(2,'Major Fruits/Nuts  & mushroom production',NULL,NULL),(3,'Major Vegetables, Spices & Oilseeds production',NULL,NULL);
 
 #
 # Structure for table "agrigenerals"
@@ -107,26 +144,28 @@ CREATE TABLE `agrigenerals` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `year` year(4) NOT NULL,
   `subsector` int(11) NOT NULL DEFAULT '0',
-  `dry` double(15,2) NOT NULL,
-  `wet` double(15,2) NOT NULL,
-  `orchad` double(15,2) NOT NULL,
-  `f_irrigation` int(11) NOT NULL,
-  `n_irrigation` int(11) NOT NULL,
-  `l_irrigation` decimal(11,2) NOT NULL,
-  `area_irrigation` decimal(11,2) NOT NULL,
-  `benefit_irrigation` int(11) NOT NULL,
-  `processing_unit` int(11) NOT NULL,
-  `mills` int(11) NOT NULL,
+  `location` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'NULL',
+  `length` double(15,2) DEFAULT NULL,
+  `benefeciaries` int(11) DEFAULT NULL,
+  `area` double(15,2) DEFAULT NULL,
+  `construct_mode` int(11) NOT NULL DEFAULT '0',
+  `construct_type` int(11) NOT NULL DEFAULT '0',
+  `chennel_type` int(11) DEFAULT NULL,
+  `associations` char(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `male` int(11) NOT NULL DEFAULT '0',
+  `female` int(11) NOT NULL DEFAULT '0',
+  `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `remarks` longtext COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "agrigenerals"
 #
 
-INSERT INTO `agrigenerals` VALUES (1,2018,30,2008.70,7001.60,236.30,94,3,272.81,3628.00,2559,335,5,'2019-09-26 07:48:35','2019-09-26 08:05:58');
+INSERT INTO `agrigenerals` VALUES (1,2018,30,'2008.70',7001.60,236,250.00,1,1,2,'Y',2559,335,'F',NULL,'2019-09-26 07:48:35','2019-09-26 08:05:58'),(2,2018,5,'sadasd',12.00,2000,500.00,1,1,1,'Y',234,655,'F','dsfsdfdsfdsassad\r\nasdasd','2019-11-03 12:31:23','2019-11-03 13:26:44');
 
 #
 # Structure for table "agriproductions"
@@ -144,13 +183,13 @@ CREATE TABLE `agriproductions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "agriproductions"
 #
 
-INSERT INTO `agriproductions` VALUES (1,30,2018,1,32,473.00,288.00,'2019-09-28 08:45:19','2019-09-28 09:14:56'),(2,30,2018,1,33,300.00,500.00,NULL,NULL);
+INSERT INTO `agriproductions` VALUES (1,30,2018,1,32,473.00,288.00,'2019-09-28 08:45:19','2019-09-28 09:14:56'),(2,30,2018,1,33,300.00,500.00,NULL,NULL),(3,5,2018,1,63,250.00,1255.00,'2019-11-05 11:36:48','2019-11-05 11:36:48');
 
 #
 # Structure for table "agriproducts"
@@ -164,13 +203,13 @@ CREATE TABLE `agriproducts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "agriproducts"
 #
 
-INSERT INTO `agriproducts` VALUES (32,1,'Wheat',NULL,NULL),(33,1,'Barley',NULL,NULL),(34,1,'Paddy',NULL,NULL),(35,1,'Maize',NULL,NULL),(36,1,'Buckwheat',NULL,NULL),(37,1,'Millet',NULL,NULL),(38,2,'Apple',NULL,NULL),(39,2,'Mandarin',NULL,NULL),(40,2,'Mango',NULL,NULL),(41,2,'Peach',NULL,NULL),(42,2,'Pear',NULL,NULL),(43,2,'Plum',NULL,NULL),(44,2,'Arecanut',NULL,NULL),(45,2,'Walnut',NULL,NULL),(46,2,'Banana',NULL,NULL),(47,2,'Persimmon',NULL,NULL),(48,3,'Cardamom',NULL,NULL),(49,3,'Ginger',NULL,NULL),(50,3,'Garlic',NULL,NULL),(51,3,'Onion',NULL,NULL),(52,3,'Potato',NULL,NULL),(53,3,'Chili',NULL,NULL),(54,3,'Cabbage',NULL,NULL),(55,3,'Cauliflower',NULL,NULL),(56,3,'Green Leaves',NULL,NULL),(57,3,'Raddish',NULL,NULL),(58,3,'Cucumber',NULL,NULL),(59,3,'Pumkin',NULL,NULL),(60,3,'Beans',NULL,NULL),(61,3,'Mustard',NULL,NULL),(62,3,'Soyabean',NULL,NULL);
+INSERT INTO `agriproducts` VALUES (63,1,'Paddy',NULL,NULL),(64,1,'Maize',NULL,NULL),(65,1,'Wheat',NULL,NULL),(66,1,'Barley',NULL,NULL),(67,1,'Buckwheat',NULL,NULL),(68,1,'Millet',NULL,NULL),(69,1,'Mustard',NULL,NULL),(70,3,'Chilli',NULL,NULL),(71,3,'Potato',NULL,NULL),(72,3,'Cabbage',NULL,NULL),(73,3,'Caulifliwer',NULL,NULL),(74,3,'broccoli',NULL,NULL),(75,3,'beans',NULL,NULL),(76,3,'soyanean',NULL,NULL),(77,3,'Green Leaves',NULL,NULL),(78,3,'gourd ',NULL,NULL),(79,3,'asparagus',NULL,NULL),(80,3,'Brinjal',NULL,NULL),(81,3,'Radish',NULL,NULL),(82,3,'carrot',NULL,NULL),(83,3,'turnip',NULL,NULL),(84,3,'ginger',NULL,NULL),(85,3,'garlic',NULL,NULL),(86,3,'bulb onion ',NULL,NULL),(87,3,'cucumber',NULL,NULL),(88,3,'pumkin',NULL,NULL),(89,3,'tree tomato',NULL,NULL),(90,3,'zanthoxylum',NULL,NULL),(91,3,'Cardamom',NULL,NULL),(92,3,'Green tea',NULL,NULL),(93,2,'Mandarin',NULL,NULL),(94,2,'Mango',NULL,NULL),(95,2,'Pear',NULL,NULL),(96,2,'peach',NULL,NULL),(97,2,'plum',NULL,NULL),(98,2,'apple',NULL,NULL),(99,2,'walnut',NULL,NULL),(100,2,'banana',NULL,NULL),(101,2,'persimmom',NULL,NULL),(102,2,'Pomegranate',NULL,NULL),(103,2,'Log Mushroom',NULL,NULL);
 
 #
 # Structure for table "animal_types"
@@ -212,6 +251,25 @@ CREATE TABLE `budgets` (
 INSERT INTO `budgets` VALUES (1,'01','RGOB',NULL,NULL),(2,'02','GOI',NULL,NULL),(3,'03','RGOB/GOI',NULL,NULL),(4,'04','WHO',NULL,NULL),(5,'05','UNICEF',NULL,NULL),(6,'06','GFATM',NULL,NULL);
 
 #
+# Structure for table "chennel_types"
+#
+
+DROP TABLE IF EXISTS `chennel_types`;
+CREATE TABLE `chennel_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `chennel_type` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "chennel_types"
+#
+
+INSERT INTO `chennel_types` VALUES (1,'RCC',NULL,NULL),(2,'Earthen',NULL,NULL),(3,'Pipe',NULL,NULL);
+
+#
 # Structure for table "class"
 #
 
@@ -229,6 +287,44 @@ CREATE TABLE `class` (
 #
 
 INSERT INTO `class` VALUES (1,'PP',NULL,NULL),(2,'I',NULL,NULL),(3,'II',NULL,NULL),(4,'III',NULL,NULL),(5,'IV',NULL,NULL),(6,'V',NULL,NULL),(7,'VI',NULL,NULL),(8,'VII',NULL,NULL),(9,'VIII',NULL,NULL),(10,'IX',NULL,NULL),(11,'X',NULL,NULL),(12,'XI',NULL,NULL),(13,'XII',NULL,NULL);
+
+#
+# Structure for table "construct_modes"
+#
+
+DROP TABLE IF EXISTS `construct_modes`;
+CREATE TABLE `construct_modes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `construct_mode` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "construct_modes"
+#
+
+INSERT INTO `construct_modes` VALUES (1,'CMU',NULL,NULL),(2,'Contract',NULL,NULL);
+
+#
+# Structure for table "construct_types"
+#
+
+DROP TABLE IF EXISTS `construct_types`;
+CREATE TABLE `construct_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `construct_type` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "construct_types"
+#
+
+INSERT INTO `construct_types` VALUES (1,'New Construction',NULL,NULL),(2,'Maintenance',NULL,NULL);
 
 #
 # Structure for table "cultures"
@@ -276,6 +372,34 @@ CREATE TABLE `designations` (
 INSERT INTO `designations` VALUES (1,'Dzongda',1,NULL,NULL),(2,'Dzongrab',2,NULL,NULL),(3,'Executive Engineer',4,NULL,NULL),(4,'Dzongkhag Education Officer',3,NULL,NULL);
 
 #
+# Structure for table "electric_fencings"
+#
+
+DROP TABLE IF EXISTS `electric_fencings`;
+CREATE TABLE `electric_fencings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `year` year(4) NOT NULL,
+  `subsector` int(11) NOT NULL,
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `length` double(15,2) NOT NULL,
+  `beneficiaries` int(11) NOT NULL,
+  `dry` double(15,2) NOT NULL,
+  `wet` double(15,2) NOT NULL,
+  `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "electric_fencings"
+#
+
+INSERT INTO `electric_fencings` VALUES (2,2018,5,'Trongsa',15.00,200,5.00,2.00,'C','1','ug','2019-11-05 11:40:01','2019-11-05 11:40:01');
+
+#
 # Structure for table "engineers"
 #
 
@@ -314,13 +438,86 @@ CREATE TABLE `events` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "events"
 #
 
-INSERT INTO `events` VALUES (1,5,2019,'LAUNCH OF BHUTAN PISA-D NATIONAL REPORT','2019-10-25','2019-10-25','2019-10-25 02:53:58','2019-10-25 02:53:58'),(2,5,2019,'Tshechu','2019-10-25','2019-10-25','2019-10-25 05:09:30','2019-10-25 05:09:30');
+INSERT INTO `events` VALUES (1,5,2019,'LAUNCH OF BHUTAN PISA-D NATIONAL REPORT','2019-10-25','2019-10-25','2019-10-25 02:53:58','2019-10-25 02:53:58'),(2,5,2019,'Tshechu','2019-10-26','2019-10-26','2019-10-25 05:09:30','2019-10-25 05:09:30'),(3,5,2019,'LAUNCH OF BHUTAN PISA-D NATIONAL REPORT','2019-11-05','2019-11-05','2019-11-05 04:58:30','2019-11-05 04:58:30'),(4,5,2019,'Minimum number of candidates required to register for a subject','2019-11-15','2019-11-15','2019-11-05 04:58:57','2019-11-05 04:58:57'),(5,6,2019,'September 11, 2001. In this Sept.','2019-11-01','0000-00-00',NULL,NULL),(6,7,2019,'President Barack Obama\'s election. ...','2019-11-02','0000-00-00',NULL,NULL),(7,8,2019,'The tech revolution. ...','2019-11-03','0000-00-00',NULL,NULL),(8,9,2019,'JFK\'s assassination. ...','2019-11-04','0000-00-00',NULL,NULL),(9,10,2019,'The Vietnam War. ...','2019-11-05','0000-00-00',NULL,NULL),(10,1,2019,'The Iraq/Afghanistan Wars. ...','2019-11-06','0000-00-00',NULL,NULL),(11,2,2019,'The moon landing. ...','2019-11-07','0000-00-00',NULL,NULL),(12,3,2019,'The fall of the Berlin Wall/end of the Cold War. ...','2019-11-08','0000-00-00',NULL,NULL);
+
+#
+# Structure for table "farm_groups"
+#
+
+DROP TABLE IF EXISTS `farm_groups`;
+CREATE TABLE `farm_groups` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `year` year(4) NOT NULL,
+  `subsector` int(11) NOT NULL,
+  `group_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` int(11) NOT NULL,
+  `registration_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "farm_groups"
+#
+
+INSERT INTO `farm_groups` VALUES (1,2018,5,'Gomdar Phenden Tshokpa',456,'sdf-543-324432-xxx','2019-11-05 11:37:06','2019-11-05 11:37:06');
+
+#
+# Structure for table "farm_roads"
+#
+
+DROP TABLE IF EXISTS `farm_roads`;
+CREATE TABLE `farm_roads` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `year` year(4) NOT NULL,
+  `subsector` int(11) NOT NULL,
+  `road_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chiwog` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `length` double(15,2) NOT NULL,
+  `benefeciaries` int(11) NOT NULL,
+  `construct_mode` int(11) NOT NULL,
+  `construct_type` int(11) NOT NULL,
+  `group` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `male` int(11) NOT NULL,
+  `female` int(11) NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "farm_roads"
+#
+
+INSERT INTO `farm_roads` VALUES (2,2018,5,'werwer','dsadsa',12.00,1000,1,1,'N',0,0,'C','jvjhh','2019-11-05 11:38:57','2019-11-05 11:38:57');
+
+#
+# Structure for table "fencing_type"
+#
+
+DROP TABLE IF EXISTS `fencing_type`;
+CREATE TABLE `fencing_type` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "fencing_type"
+#
+
+INSERT INTO `fencing_type` VALUES (1,'Individual',NULL,NULL),(2,'Community',NULL,NULL);
 
 #
 # Structure for table "financial_year"
@@ -406,7 +603,7 @@ CREATE TABLE `heritage_type` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "heritage_type"
@@ -438,6 +635,30 @@ CREATE TABLE `histories` (
 INSERT INTO `histories` VALUES (1,545454,'Drukgyel High School','Teacher','2019-09-05','2019-09-05','2019-09-05 09:34:14','2019-09-06 05:05:01'),(2,545454,'Ranjung High School','Principal','2019-09-05','2019-09-05','2019-09-05 09:35:40','2019-09-05 09:35:40'),(3,545454,'Office of Gyelpo Zimpon','---','2019-09-20','2019-09-05','2019-09-05 09:59:01','2019-09-05 09:59:01'),(4,545454,'Bhutan Council for School Examinations and Assessment','Secretary','2019-09-05','2019-09-05','2019-09-05 10:02:46','2019-09-05 10:02:46');
 
 #
+# Structure for table "land_developments"
+#
+
+DROP TABLE IF EXISTS `land_developments`;
+CREATE TABLE `land_developments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `year` year(4) NOT NULL,
+  `subsector` int(11) NOT NULL,
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dry` int(11) NOT NULL,
+  `wet` int(11) NOT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "land_developments"
+#
+
+INSERT INTO `land_developments` VALUES (2,2018,5,'Trongsamnmnbmn',152,152,'ijhj','2019-11-05 11:40:39','2019-11-05 11:40:39');
+
+#
 # Structure for table "levels"
 #
 
@@ -455,6 +676,58 @@ CREATE TABLE `levels` (
 #
 
 INSERT INTO `levels` VALUES (1,'NA',NULL,NULL),(2,'ECCD',NULL,NULL),(3,'Primary',NULL,NULL),(4,'Lower Secondary',NULL,NULL),(5,'Middle Secondary',NULL,NULL),(6,'Higher Secondary',NULL,NULL);
+
+#
+# Structure for table "livestock_groups"
+#
+
+DROP TABLE IF EXISTS `livestock_groups`;
+CREATE TABLE `livestock_groups` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `subsector` int(11) NOT NULL,
+  `year` year(4) NOT NULL,
+  `group_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `registration_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `male` int(11) NOT NULL,
+  `female` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "livestock_groups"
+#
+
+INSERT INTO `livestock_groups` VALUES (1,5,2018,'sadsadsda','asdsadadsasd',123,'231','2019-11-04 10:39:15','2019-11-04 10:47:54'),(2,5,2018,'LAUNCH OF BHUTAN PISA-D NATIONAL REPORT','sdf-543-324432-xxx',200,'350','2019-11-05 11:41:25','2019-11-05 11:41:25');
+
+#
+# Structure for table "livestock_infras"
+#
+
+DROP TABLE IF EXISTS `livestock_infras`;
+CREATE TABLE `livestock_infras` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `subsector` int(11) NOT NULL,
+  `ais` int(11) NOT NULL,
+  `biogas` int(11) NOT NULL,
+  `poultry_micro` int(11) NOT NULL,
+  `poultry_commercial` int(11) NOT NULL,
+  `poultry_broiler` int(11) NOT NULL,
+  `diary_micro` int(11) NOT NULL,
+  `diary_commercial` int(11) NOT NULL,
+  `milk_processing` int(11) NOT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# Data for table "livestock_infras"
+#
+
+INSERT INTO `livestock_infras` VALUES (2,5,1,50,5,2,1,10,20,2,'','2019-11-05 11:42:00','2019-11-05 11:42:00');
 
 #
 # Structure for table "livestockgenerals"
@@ -492,13 +765,13 @@ CREATE TABLE `livestockproductions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "livestockproductions"
 #
 
-INSERT INTO `livestockproductions` VALUES (2,2018,29,2,500,'2019-09-28 11:52:25','2019-09-28 11:52:25'),(3,2018,29,3,400,NULL,NULL),(4,2018,29,4,200,NULL,NULL);
+INSERT INTO `livestockproductions` VALUES (2,2018,29,2,500,'2019-09-28 11:52:25','2019-09-28 11:52:25'),(3,2018,29,3,400,NULL,NULL),(4,2018,29,4,200,NULL,NULL),(5,2018,5,1,2500,'2019-11-05 11:42:18','2019-11-05 11:42:18'),(6,2018,5,2,1500,'2019-11-05 11:42:37','2019-11-05 11:42:37');
 
 #
 # Structure for table "ls_product_types"
@@ -529,13 +802,13 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "migrations"
 #
 
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_25_044641_create_profiles_table',1),(4,'2019_08_28_085316_create_sector_table',1),(5,'2019_08_28_090738_create_subsector_table',1),(6,'2019_08_30_083107_create_designation_table',1),(8,'2019_09_04_072542_create_qualifications_table',2),(9,'2019_09_05_052945_create_histories_table',3),(10,'2019_09_06_111346_create_activities_table',4),(11,'2019_09_19_154332_create_population_table',5),(12,'2019_09_21_055909_create_schoolstaffinfos_table',6),(13,'2019_09_21_062054_levels',7),(14,'2019_09_21_091343_create_school_student_infos_table',8),(15,'2019_09_25_040957_create_general_infos_table',9),(16,'2019_09_26_042611_create_morbidities_table',10),(17,'2019_09_26_055456_create_agrigenerals_table',11),(18,'2019_09_26_081226_create_agriproductions_table',12),(19,'2019_09_28_103356_create_livestockgenerals_table',13),(20,'2019_09_28_113432_create_livestockproductions_table',14),(21,'2019_10_04_050854_create_years_table',15),(22,'2019_10_23_101204_create_school_infras_table',16),(23,'2019_10_23_130317_create_cultures_table',17),(24,'2019_10_24_033856_create_primary_foci_table',18),(25,'2019_10_24_054058_create_engineers_table',19),(26,'2019_10_25_022900_create_events_table',20);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_25_044641_create_profiles_table',1),(4,'2019_08_28_085316_create_sector_table',1),(5,'2019_08_28_090738_create_subsector_table',1),(6,'2019_08_30_083107_create_designation_table',1),(8,'2019_09_04_072542_create_qualifications_table',2),(9,'2019_09_05_052945_create_histories_table',3),(10,'2019_09_06_111346_create_activities_table',4),(11,'2019_09_19_154332_create_population_table',5),(12,'2019_09_21_055909_create_schoolstaffinfos_table',6),(13,'2019_09_21_062054_levels',7),(14,'2019_09_21_091343_create_school_student_infos_table',8),(15,'2019_09_25_040957_create_general_infos_table',9),(16,'2019_09_26_042611_create_morbidities_table',10),(17,'2019_09_26_055456_create_agrigenerals_table',11),(18,'2019_09_26_081226_create_agriproductions_table',12),(19,'2019_09_28_103356_create_livestockgenerals_table',13),(20,'2019_09_28_113432_create_livestockproductions_table',14),(21,'2019_10_04_050854_create_years_table',15),(22,'2019_10_23_101204_create_school_infras_table',16),(23,'2019_10_23_130317_create_cultures_table',17),(24,'2019_10_24_033856_create_primary_foci_table',18),(25,'2019_10_24_054058_create_engineers_table',19),(26,'2019_10_25_022900_create_events_table',20),(27,'2019_11_03_134922_create_farm_groups_table',21),(28,'2019_11_03_143722_create_agri_facilities_table',22),(29,'2019_11_04_054025_create_land_developments_table',23),(30,'2019_11_04_061841_create_electric_fencings_table',24),(31,'2019_11_04_083838_create_farm_roads_table',25),(32,'2019_11_04_101937_create_livestock_groups_table',26),(33,'2019_11_04_112305_create_livestock_infras_table',27);
 
 #
 # Structure for table "morbidities"
@@ -812,7 +1085,7 @@ CREATE TABLE `sector` (
 # Data for table "sector"
 #
 
-INSERT INTO `sector` VALUES (1,'Office of Dzongda','2019-08-28 00:00:00',NULL),(2,'DYT Secretary','2019-08-28 00:00:00',NULL),(3,'Agriculture','2019-08-28 00:00:00',NULL),(4,'Livestock','2019-08-28 00:00:00',NULL),(5,'Education','2019-08-28 00:00:00',NULL),(6,'Health','2019-08-28 00:00:00',NULL);
+INSERT INTO `sector` VALUES (1,'Office of Dzongda','2019-08-28 00:00:00',NULL),(2,'Gup Office','2019-08-28 00:00:00',NULL),(3,'RNR Agriculture','2019-08-28 00:00:00',NULL),(4,'RNR Livestock','2019-08-28 00:00:00',NULL),(5,'Education-School','2019-08-28 00:00:00',NULL),(6,'Health- Hospital & BHU','2019-08-28 00:00:00',NULL);
 
 #
 # Structure for table "status"
@@ -864,13 +1137,13 @@ CREATE TABLE `subsector` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "subsector"
 #
 
-INSERT INTO `subsector` VALUES (1,'Secretariat',1,'2019-08-28 00:00:00',NULL),(2,'Legal Unit',1,'2019-08-28 00:00:00',NULL),(3,'Land Sector',1,'2019-08-28 00:00:00',NULL),(4,'Statistics',1,'2019-08-28 00:00:00',NULL),(5,'Engineering',1,'2019-08-28 00:00:00',NULL),(6,'Environment',1,'2019-08-28 00:00:00',NULL),(7,'HR',1,'2019-08-28 00:00:00',NULL),(8,'Procurement',1,'2019-08-28 00:00:00',NULL),(9,'Internal Audit',1,'2019-08-28 00:00:00',NULL),(10,'Planning',1,'2019-08-28 00:00:00',NULL),(11,'Accounts',1,'2019-08-28 00:00:00',NULL),(12,'ICT',1,'2019-08-28 00:00:00',NULL),(13,'Election',1,'2019-08-28 00:00:00',NULL),(14,'Culture',1,'2019-08-28 00:00:00',NULL),(15,'DYT Secretary',2,'2019-08-28 00:00:00',NULL),(16,'Tangsibje',2,'2019-08-28 00:00:00',NULL),(17,'Nubi',2,'2019-08-28 00:00:00',NULL),(18,'Langthel',2,'2019-08-28 00:00:00',NULL),(19,'Korphu',2,'2019-08-28 00:00:00',NULL),(20,'Drakteng',2,'2019-08-28 00:00:00',NULL),(21,'Agriculture',3,'2019-08-28 00:00:00',NULL),(22,'Dzongkhag Agriculture Office',3,'2019-08-28 00:00:00',NULL),(23,'livestock',4,'2019-08-28 00:00:00',NULL),(24,'Dzongkhag livestock Office',4,'2019-08-28 00:00:00',NULL),(25,'Dzongkhag Education Office',5,'2019-08-28 00:00:00',NULL),(26,'Sherubling HSS',5,'2019-08-28 00:00:00',NULL),(27,'Tangsibje BHU',6,'2019-08-28 00:00:00',NULL),(28,'Dzongkhag Health Office',6,'2019-08-28 00:00:00',NULL),(29,'Nubi Livestock Office',4,NULL,NULL),(30,'Nubi Agriculture Office',3,NULL,NULL),(31,'Trongsa General Hospital',6,NULL,NULL),(32,'Sherubling Higher Secondary School',5,NULL,NULL);
+INSERT INTO `subsector` VALUES (1,'Secretariat',1,'2019-08-28 00:00:00',NULL),(2,'Legal Unit',1,'2019-08-28 00:00:00',NULL),(3,'Land Sector',1,'2019-08-28 00:00:00',NULL),(4,'Statistics',1,'2019-08-28 00:00:00',NULL),(5,'Engineering',1,'2019-08-28 00:00:00',NULL),(6,'Environment',1,'2019-08-28 00:00:00',NULL),(7,'HR',1,'2019-08-28 00:00:00',NULL),(8,'Procurement',1,'2019-08-28 00:00:00',NULL),(9,'Internal Audit',1,'2019-08-28 00:00:00',NULL),(10,'Planning',1,'2019-08-28 00:00:00',NULL),(11,'Accounts',1,'2019-08-28 00:00:00',NULL),(12,'ICT',1,'2019-08-28 00:00:00',NULL),(13,'Election',1,'2019-08-28 00:00:00',NULL),(14,'Culture',1,'2019-08-28 00:00:00',NULL),(15,'DYT Secretary',1,'2019-08-28 00:00:00',NULL),(16,'Dzongkhag Agriculture Office',1,'2019-08-28 00:00:00',NULL),(17,'Dzongkhag livestock Office',1,'2019-08-28 00:00:00',NULL),(18,'Dzongkhag Education Office',1,'2019-08-28 00:00:00',NULL),(19,'Dzongkhag Health Office',1,'2019-08-28 00:00:00',NULL),(20,'Darkteng Gewog',2,NULL,NULL),(21,'Korphu Gewog',2,NULL,NULL),(22,'Nubi Geowg',2,NULL,NULL),(23,'Langthel Gewog',2,NULL,NULL),(24,'Tangsibji Gewog',2,NULL,NULL),(34,'Darkteng Agriculture Office',3,NULL,NULL),(35,'Korphu Agriculture Office',3,NULL,NULL),(36,'Nubi Agriculture Office',3,NULL,NULL),(37,'Langthel Agriculture Office',3,NULL,NULL),(38,'Tangsibji Agriculture Office',3,NULL,NULL),(39,'Darkteng livestock Office',4,NULL,NULL),(40,'Korphu livestock Office',4,NULL,NULL),(41,'Nubi livestock Office',4,NULL,NULL),(42,'Langthel livestock Office',4,NULL,NULL),(43,'Tangsibji livestock Office',4,NULL,NULL),(44,'Baleng Primary School',5,NULL,NULL),(45,'Jangbi Community School',5,NULL,NULL),(46,'Samcholing Middle Secondary School',5,NULL,NULL),(47,'Sherubling Central School',5,NULL,NULL),(48,' Kingarepten Lower Secondary School',5,NULL,NULL),(49,'Samcholing Community School',5,NULL,NULL),(50,'Langthel Lower Secondary School',5,NULL,NULL),(51,'Bjeezam Primary School',5,NULL,NULL),(52,'Taktse Righung Higher Secondary School',5,NULL,NULL),(53,'Tshangkha Lower Secondary School',5,NULL,NULL),(54,'Nimshong Primary School',5,NULL,NULL),(55,'Nabji Community Primary School',5,NULL,NULL),(56,'Korphu Primary School',5,NULL,NULL);
 
 #
 # Structure for table "supers"
@@ -912,7 +1185,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "users"

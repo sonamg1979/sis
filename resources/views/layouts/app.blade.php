@@ -46,4 +46,35 @@
         } );
     } );
     </script>
+    <style>
+        .agenda {  }
+    
+        /* Dates */
+        .agenda .agenda-date { width: 170px; }
+        .agenda .agenda-date .dayofmonth {
+        width: 45px;
+        font-size: 24px;
+        line-height: 30px;
+        float: left;
+        text-align: right;
+        color:sienna;
+        margin-right: 5px; 
+        }
+        .agenda .agenda-date .shortdate {
+        font-size: 0.75em; 
+        }
+    
+    
+        /* Times */
+        .agenda .agenda-time { width: 140px; } 
+    
+    
+        /* Events */
+        .agenda .agenda-events {  } 
+        .agenda .agenda-events .agenda-event {  } 
+    
+        @media (max-width: 767px) {
+            
+        }
+    </style>
 </html>

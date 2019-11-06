@@ -59,10 +59,10 @@
                                 </ul>
                             </li>
                             <li class="dropright">
-                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Production Details</a>
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">General Users</a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="/agriproduction/create">Add</a></li>
-                                    <li><a href="/agriproduction">View</a></li>
+                                    <li><a href="/nusers/create">Add</a></li>
+                                    <li><a href="/nusers">View</a></li>
                                     </ul>
                                 </li>
                             </ul>

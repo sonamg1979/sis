@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\User;
+use App\Admin;
 use App\Subsector;
 use DateTime;
 use Hash;
@@ -36,7 +36,10 @@ class SuperUserController extends Controller
     public function index()
     {
         ///$activity = Activity::paginate(10);
-        $user = User::paginate(10);
+        $user = DB::table('admins')
+            ->join('subsector', 'admins.subsector', '=', 'subsector.id')
+            ->select('admins.id','admins.name','admins.email','subsector.subsector')
+            ->paginate(10);
         return view('administrator.users.index')->with('users',$user);
     }
 
@@ -61,28 +64,22 @@ class SuperUserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'fyear' =>'required',
-            'budget' =>'required',
-            'activity' =>'required',
-            'sdate' =>'required',
-            'edate' =>'required',
-            'budget_line' =>'required',
-            'allotted_budget' =>'required'
+            'sector' =>'required',
+            'subsector' =>'required',
+            'email' =>'required|email',
+            'name' =>'required',
+            'password' =>'required'
         ]);
         
-        $activity = new Activity;
-        $activity->sector = session('SEC');
-        $activity->subsector = session('SUBSEC');
-        $activity->f_year = $request->input('fyear');
-        $activity->budget = $request->input('budget');
-        $activity->activity = $request->input('activity');
-        $activity->sdate = $request->input('sdate');
-        $activity->edate = $request->input('edate');
-        $activity->budget_line = $request->input('budget_line');
-        $activity->allotted_budget = $request->input('allotted_budget');
-        $activity->status = 'N';
+        $activity = new Admin;
+        $activity->sector = $request->input('sector');
+        $activity->subsector = $request->input('subsector');
+        $activity->email = $request->input('email');
+        $activity->name = $request->input('name');
+        $activity->password = Hash::make($request->input('password'));
         $activity->save();
-        return redirect('/activity')->with('success','Saved successfully!!');
+
+        return redirect('/users')->with('success','Saved successfully!!');
     }
 
     /**
@@ -93,19 +90,7 @@ class SuperUserController extends Controller
      */
     public function show($id)
     {
-        $activity = DB::table('activitys')
-            ->join('sector', 'activitys.sector', '=', 'sector.id')
-            ->join('subsector', 'activitys.subsector', '=', 'subsector.id')
-            ->join('budgets', 'activitys.budget', '=', 'budgets.id')
-            ->join('qualifications', 'activitys.qualification', '=', 'qualifications.id')
-            ->where('activitys.id', '=', $id)
-            ->select('activitys.employee_id', 'activitys.employee_name', 
-            'activitys.dob', 'activitys.sex', 'activitys.cid_number', 'activitys.email', 'activitys.photo', 'activitys.id',
-            'sector.sector', 'subsector.subsector', 'budgets.budget', 'qualifications.qualification')
-            ->get();
-        //$activity=activity::find($id);
-        //return $activity;
-        return view('activity.show')->with('activitys',$activity);
+
     }
 
     /**
@@ -116,14 +101,13 @@ class SuperUserController extends Controller
      */
     public function edit($id)
     {
-        $budgets=DB::table('budgets')
-            ->groupBy('budget')
+        $sector=DB::table('sector')
             ->get();
-        $fyears=DB::table('financial_year')
+        $subsector=DB::table('subsector')
             ->get();
-        $activity=activity::find($id);
-        return view('activity.edit')->with('activitys',$activity)->with('fyears',$fyears)
-        ->with('budgets',$budgets);
+        $info=Admin::find($id);
+        return view('administrator.users.edit')->with('sector',$sector)->with('subsector',$subsector)
+        ->with('datas',$info);
     }
 
     /**
@@ -136,25 +120,19 @@ class SuperUserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'fyear' =>'required',
-            'budget' =>'required',
-            'activity' =>'required',
-            'sdate' =>'required',
-            'edate' =>'required',
-            'budget_line' =>'required',
-            'allotted_budget' =>'required'
+            'sector' =>'required',
+            'subsector' =>'required',
+            'email' =>'required|email',
+            'name' =>'required'
         ]);
         
-        $activity = activity::find($id);
-        $activity->f_year = $request->input('fyear');
-        $activity->budget = $request->input('budget');
-        $activity->activity = $request->input('activity');
-        $activity->sdate = $request->input('sdate');
-        $activity->edate = $request->input('edate');
-        $activity->budget_line = $request->input('budget_line');
-        $activity->allotted_budget = $request->input('allotted_budget');
+        $activity = Admin::find($id);
+        $activity->sector = $request->input('sector');
+        $activity->subsector = $request->input('subsector');
+        $activity->email = $request->input('email');
+        $activity->name = $request->input('name');
         $activity->save();
-        return redirect('/activity')->with('success','Updated successfully!!');
+        return redirect('/users')->with('success','Updated successfully!!');
     }
 
     /**
@@ -165,8 +143,8 @@ class SuperUserController extends Controller
      */
     public function destroy($id)
     {
-        $activity= activity::find($id);
+        $activity= Admin::find($id);
         $activity->delete();
-        return redirect('/activity')->with('success','Deleted successfully!!');
+        return redirect('/users')->with('success','Deleted successfully!!');
     }
 }
