@@ -24,7 +24,7 @@ class SuperController extends Controller
      */
     public function index()
     {
-        return view('superdashboard');
+        return view('super/superdashboard');
     }
     public function logout(Request $request) {
         Auth::guard('super')->logout();

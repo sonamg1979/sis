@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admindashboard');
+        return view('admin/admindashboard');
     }
     public function logout(Request $request) {
         Auth::guard('admin')->logout();

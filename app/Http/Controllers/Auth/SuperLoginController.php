@@ -35,6 +35,6 @@ class SuperLoginController extends Controller
     public function superlogout()
     {
         Auth::guard('super')->logout();
-        return redirect()->guest(route( 'super.login' ));
+        return redirect()->guest(route( 'super.dashboard' ));
     }
 }
