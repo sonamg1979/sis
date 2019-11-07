@@ -24,13 +24,13 @@ class SuperController extends Controller
      */
     public function index()
     {
-        return view('super/superdashboard');
+        return view('superdashboard');
     }
     public function logout(Request $request) {
         Auth::guard('super')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route( 'super.login' ));
+        return redirect()->guest(route( 'super.dashboard' ));
     }
 
     

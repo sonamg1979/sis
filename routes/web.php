@@ -11,7 +11,7 @@
 |
 
 */
-Route::get('/', 'DashboardController@index')->name('main');
+
 //Route::get('/page','PagesController@index');
 //Route::get('/history','HistoryController@index');
 Route::resource('/profile','ProfileController');
@@ -64,49 +64,49 @@ Route::get('/json-fyear','ActivityController@fyear');
 Route::get('/json-subsector','SuperController@sub_sector');
 
 Auth::routes();
-//Route::get('/', 'GeneralDashboardController@index')->name('dashboard');
+Route::get('/', 'DashboardController@index')->name('dashboard');
 
 
 Route::prefix('dashboard')->group(function(){
-    Route::get('/dashboard', 'GeneralDashboardController@index')->name('dashboard');
-    Route::get('/home', 'GeneralDashboardController@index')->name('home');
-    Route::get('/', 'GeneralDashboardController@index')->name('dashboard');
-    Route::get('/populationage', 'GeneralDashboardController@populationage')->name('populationage');
-    Route::get('/populationplace', 'GeneralDashboardController@populationplace')->name('populationplace');
-    Route::get('/healthinfo', 'GeneralDashboardController@health_info')->name('health-info');
-    Route::get('/morbidity', 'GeneralDashboardController@morbidity')->name('morbidity');
-    Route::get('/morbidityby', 'GeneralDashboardController@morbidityby')->name('morbidityby');
-    Route::get('/studentinfo', 'GeneralDashboardController@student_info')->name('studentinfo');
-    Route::get('/studentinfoclass', 'GeneralDashboardController@student_info_class')->name('studentinfoclass');
-    Route::get('/studentschool', 'GeneralDashboardController@student_sch')->name('studentschool');
-    Route::get('/studentschoolinfo', 'GeneralDashboardController@student_school')->name('studentschoolinfo');
-    Route::get('/schoolstaff', 'GeneralDashboardController@student_staff')->name('studentstaff');
-    Route::get('/livestockgewog', 'GeneralDashboardController@livestock_gewog')->name('livestockgewog');
-    Route::get('/livestock', 'GeneralDashboardController@livestock')->name('livestock');
-    Route::get('/livestockproduct', 'GeneralDashboardController@livestock_product')->name('livestock-product');
-    Route::get('/livestockinfra', 'GeneralDashboardController@livestock_infra')->name('livestockinfra');
-    Route::get('/livestockgroup', 'GeneralDashboardController@livestock_group')->name('livestockgroup');
-    Route::get('/livestockproductgewog', 'GeneralDashboardController@livestock_product_gewog')->name('livestockproductgewog');
-    Route::get('/agriculture', 'GeneralDashboardController@agriculture')->name('agriculture');
-    Route::get('/agriculturegewog', 'GeneralDashboardController@agriculture_gewog')->name('agriculture_gewog');
-    Route::get('/agricultureproduct', 'GeneralDashboardController@agriculture_product')->name('agriculture_product');
-    Route::get('/agricultureproductgewog', 'GeneralDashboardController@agriculture_product_gewog')->name('agriculture_product-gewog');
-    Route::get('/agrifacilities', 'GeneralDashboardController@agri_facilities')->name('agri_facilities');
-    Route::get('/agrifarmgroup', 'GeneralDashboardController@agri_farm_group')->name('agrifarmgroup');
-    Route::get('/agriirrigation', 'GeneralDashboardController@agri_irrigation')->name('agriirrigation');
-    Route::get('/agrielectricfencing', 'GeneralDashboardController@agri_electric_fencing')->name('agrielectricfencing');
-    Route::get('/agrifarmroad', 'GeneralDashboardController@agri_farm_road')->name('agrifarmroad');
-    Route::get('/landdevelopment', 'GeneralDashboardController@agri_land_development')->name('landdevelopment');
-    Route::get('/employee_all', 'GeneralDashboardController@emp_all')->name('employee_all');
-    Route::get('/employee_show/{token}', 'GeneralDashboardController@emp_show')->name('employee_show');
-    Route::get('/employee_history/{token}', 'GeneralDashboardController@emp_history')->name('employee_history');
-    Route::get('/activity_show/{token}', 'GeneralDashboardController@activity_show')->name('activity_show');
-    Route::get('/site_visit/{token}', 'GeneralDashboardController@visit_history')->name('site_visit');
-    Route::get('/activity_all', 'GeneralDashboardController@activity_show_all')->name('activity_show_all');
-    Route::get('/focus_all', 'GeneralDashboardController@focus_all')->name('focus_all');
-    Route::get('/culture_all', 'GeneralDashboardController@culture_all')->name('culture_all');
-    Route::get('/culture_show/{token}', 'GeneralDashboardController@culture_show')->name('culture_show');
-    Route::get('/schoollist', 'GeneralDashboardController@school_details')->name('school_details');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/home', 'DashboardController@index')->name('home');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/populationage', 'DashboardController@populationage')->name('populationage');
+    Route::get('/populationplace', 'DashboardController@populationplace')->name('populationplace');
+    Route::get('/healthinfo', 'DashboardController@health_info')->name('health-info');
+    Route::get('/morbidity', 'DashboardController@morbidity')->name('morbidity');
+    Route::get('/morbidityby', 'DashboardController@morbidityby')->name('morbidityby');
+    Route::get('/studentinfo', 'DashboardController@student_info')->name('studentinfo');
+    Route::get('/studentinfoclass', 'DashboardController@student_info_class')->name('studentinfoclass');
+    Route::get('/studentschool', 'DashboardController@student_sch')->name('studentschool');
+    Route::get('/studentschoolinfo', 'DashboardController@student_school')->name('studentschoolinfo');
+    Route::get('/schoolstaff', 'DashboardController@student_staff')->name('studentstaff');
+    Route::get('/livestockgewog', 'DashboardController@livestock_gewog')->name('livestockgewog');
+    Route::get('/livestock', 'DashboardController@livestock')->name('livestock');
+    Route::get('/livestockproduct', 'DashboardController@livestock_product')->name('livestock-product');
+    Route::get('/livestockinfra', 'DashboardController@livestock_infra')->name('livestockinfra');
+    Route::get('/livestockgroup', 'DashboardController@livestock_group')->name('livestockgroup');
+    Route::get('/livestockproductgewog', 'DashboardController@livestock_product_gewog')->name('livestockproductgewog');
+    Route::get('/agriculture', 'DashboardController@agriculture')->name('agriculture');
+    Route::get('/agriculturegewog', 'DashboardController@agriculture_gewog')->name('agriculture_gewog');
+    Route::get('/agricultureproduct', 'DashboardController@agriculture_product')->name('agriculture_product');
+    Route::get('/agricultureproductgewog', 'DashboardController@agriculture_product_gewog')->name('agriculture_product-gewog');
+    Route::get('/agrifacilities', 'DashboardController@agri_facilities')->name('agri_facilities');
+    Route::get('/agrifarmgroup', 'DashboardController@agri_farm_group')->name('agrifarmgroup');
+    Route::get('/agriirrigation', 'DashboardController@agri_irrigation')->name('agriirrigation');
+    Route::get('/agrielectricfencing', 'DashboardController@agri_electric_fencing')->name('agrielectricfencing');
+    Route::get('/agrifarmroad', 'DashboardController@agri_farm_road')->name('agrifarmroad');
+    Route::get('/landdevelopment', 'DashboardController@agri_land_development')->name('landdevelopment');
+    Route::get('/employee_all', 'DashboardController@emp_all')->name('employee_all');
+    Route::get('/employee_show/{token}', 'DashboardController@emp_show')->name('employee_show');
+    Route::get('/employee_history/{token}', 'DashboardController@emp_history')->name('employee_history');
+    Route::get('/activity_show/{token}', 'DashboardController@activity_show')->name('activity_show');
+    Route::get('/site_visit/{token}', 'DashboardController@visit_history')->name('site_visit');
+    Route::get('/activity_all', 'DashboardController@activity_show_all')->name('activity_show_all');
+    Route::get('/focus_all', 'DashboardController@focus_all')->name('focus_all');
+    Route::get('/culture_all', 'DashboardController@culture_all')->name('culture_all');
+    Route::get('/culture_show/{token}', 'DashboardController@culture_show')->name('culture_show');
+    Route::get('/schoollist', 'DashboardController@school_details')->name('school_details');
 });
 
 Route::prefix('admin')->group(function(){
