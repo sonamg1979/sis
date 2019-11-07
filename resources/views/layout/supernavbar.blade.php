@@ -44,10 +44,7 @@
                 @else
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="active"><a href="/admin/dashboard">Home <span class="sr-only">(current)</span></a></li>
-
-                        
-                        <!---Agriculture--->
+                        <li class="active"><a href="/super/dashboard">Home <span class="sr-only">(current)</span></a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,6 +64,148 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary Master</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sector</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/sector/create">Add</a></li>
+                                <li><a href="/sector">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agency</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/subsector/create">Add</a></li>
+                                <li><a href="/subsector">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designation</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/designation/create">Add</a></li>
+                                <li><a href="/designation">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Qualification</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/qualification/create">Add</a></li>
+                                <li><a href="/qualification">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Year & Financial Year</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/year/create">Add</a></li>
+                                <li><a href="/year">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/status/create">Add</a></li>
+                                <li><a href="/status">View</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        </li>
+                        <!---- Education --->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Education Master</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School Level</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/schoollevel/create">Add</a></li>
+                                <li><a href="/schoollevel">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/class/create">Add</a></li>
+                                <li><a href="/class">View</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropright">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student Age-Range by Class</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="/studentage/create">Add</a></li>
+                                <li><a href="/studentage">View</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        </li>
+                        <!---- RNR --->
+                        <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RNR Master</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agriculture Product Category</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/agricategory/create">Add</a></li>
+                                    <li><a href="/agricategory">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agriculture Products</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/agriproduct/create">Add</a></li>
+                                    <li><a href="/agriproduct">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fencing Type</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/fencing/create">Add</a></li>
+                                    <li><a href="/fencing">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Channel Type</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/channel/create">Add</a></li>
+                                    <li><a href="/channel">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Construction Mode</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/mode/create">Add</a></li>
+                                    <li><a href="/mode">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Construction Type</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/type/create">Add</a></li>
+                                    <li><a href="/type">View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Livestock Products</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/lstype/create">Add</a></li>
+                                    <li><a href="/lstype">View</a></li>
+                                    </ul>
+                                </li>
+                                </ul>
+                            </li>
+                            <!---- Culture --->
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Heritage Master</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="dropright">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Heritage Type</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="/heritage/create">Add</a></li>
+                                    <li><a href="/heritage">View</a></li>
+                                    </ul>
+                                </li>
+                                </ul>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,24 +213,16 @@
                         <!-- Authentication Links -->
                         @guest
                         @else
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="/super/logout">{{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ 'App\Super' == Auth::getProvider()->getModel() ? route('super.logout') : route('logout') }}" method="GET" style="display: none;">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </li>
                             
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-        
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="super/logout"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-        
-                                    <form id="logout-form" action="{{ 'App\Super' == Auth::getProvider()->getModel() ? route('super.logout') : route('logout') }}" method="GET" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
                         @endguest
                     </ul>
                     @endguest

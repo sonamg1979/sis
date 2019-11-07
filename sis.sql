@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.26-MariaDB)
-# Date: 2019-11-05 22:02:15
+# Date: 2019-11-07 11:25:46
 # Generator: MySQL-Front 6.1  (Build 1.16)
 
 
@@ -52,7 +52,7 @@ CREATE TABLE `admins` (
   `employee_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admins_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "admins"
@@ -256,12 +256,12 @@ INSERT INTO `budgets` VALUES (1,'01','RGOB',NULL,NULL),(2,'02','GOI',NULL,NULL),
 
 DROP TABLE IF EXISTS `chennel_types`;
 CREATE TABLE `chennel_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `chennel_type` varchar(50) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "chennel_types"
@@ -294,12 +294,12 @@ INSERT INTO `class` VALUES (1,'PP',NULL,NULL),(2,'I',NULL,NULL),(3,'II',NULL,NUL
 
 DROP TABLE IF EXISTS `construct_modes`;
 CREATE TABLE `construct_modes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `construct_mode` varchar(50) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "construct_modes"
@@ -313,12 +313,12 @@ INSERT INTO `construct_modes` VALUES (1,'CMU',NULL,NULL),(2,'Contract',NULL,NULL
 
 DROP TABLE IF EXISTS `construct_types`;
 CREATE TABLE `construct_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `construct_type` varchar(50) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "construct_types"
@@ -369,7 +369,7 @@ CREATE TABLE `designations` (
 # Data for table "designations"
 #
 
-INSERT INTO `designations` VALUES (1,'Dzongda',1,NULL,NULL),(2,'Dzongrab',2,NULL,NULL),(3,'Executive Engineer',4,NULL,NULL),(4,'Dzongkhag Education Officer',3,NULL,NULL);
+INSERT INTO `designations` VALUES (1,'Dzongda',1,NULL,NULL),(2,'Dzongrab',2,NULL,NULL),(3,'Executive Engineer',3,NULL,'2019-11-06 10:15:53'),(4,'Dzongkhag Education Officer',3,NULL,NULL);
 
 #
 # Structure for table "electric_fencings"
@@ -967,7 +967,7 @@ CREATE TABLE `qualifications` (
 # Data for table "qualifications"
 #
 
-INSERT INTO `qualifications` VALUES (1,'Doctorate',NULL,NULL),(2,'Masters',NULL,NULL),(3,'Bachelor',NULL,NULL),(4,'Diploma',NULL,NULL),(5,'Certificate',NULL,NULL),(6,'General',NULL,NULL);
+INSERT INTO `qualifications` VALUES (1,'Doctorate',NULL,NULL),(2,'Masters',NULL,NULL),(3,'Bachelor',NULL,NULL),(4,'Diploma',NULL,NULL),(5,'Certificate',NULL,NULL),(6,'General-Class X or XII passed',NULL,'2019-11-06 15:38:24');
 
 #
 # Structure for table "school_infras"
@@ -1096,14 +1096,15 @@ CREATE TABLE `status` (
   `id` char(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "status"
 #
 
-INSERT INTO `status` VALUES ('N','N/A',NULL,NULL),('C','Completed',NULL,NULL),('O','On Track',NULL,NULL),('A','At Risk',NULL,NULL),('H','On Hold',NULL,NULL);
+INSERT INTO `status` VALUES ('A','At Risk',NULL,NULL),('C','Completed',NULL,NULL),('H','On Hold',NULL,NULL),('N','N/A',NULL,NULL),('O','On Track',NULL,NULL);
 
 #
 # Structure for table "student_ages"
@@ -1185,7 +1186,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 #
 # Data for table "users"

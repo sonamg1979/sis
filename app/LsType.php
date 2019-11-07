@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subsector extends Model
+class LsType extends Model
 {
-    public $table='subsector';
+    //Table Name
+    public $table='ls_product_types';
+    //Primary Key
     public $primaryKey='id';
+    //Timestamps
     public $timestamps=true;
 }

@@ -123,11 +123,14 @@ Route::prefix('super')->group(function(){
     Route::post('/login','Auth\SuperLoginController@login')->name('super.login.submit');
     Route::get('/dashboard', 'SuperController@index')->name('super.dashboard');
     Route::get('/', 'SuperController@index')->name('super.dashboard');
-    Route::get('/logout','Auth\AdminLoginController@login')->name('super.logout');
+    Route::get('/logout','Auth\SuperLoginController@superlogout')->name('super.logout');
     Route::post('/password/email','Auth\SuperForgotPasswordController@sendResetLinkEmail')->name('super.password.email');
     Route::post('/password/reset','Auth\SuperResetPasswordController@reset');
     Route::get('/password/reset','Auth\SuperForgotPasswordController@showLinkRequestForm')->name('super.password.request');
     Route::get('/password/reset/{token}','Auth\SuperResetPasswordController@showResetForm')->name('super.password.reset');
+});
+Route::prefix('user')->group(function(){
+    Route::get('/logout','Auth\LoginController@userlogout')->name('user.logout');
 });
 //Route::resource('/administrator','SuperController');
 
@@ -135,9 +138,26 @@ Route::prefix('super')->group(function(){
 Route::get('/administrator/show','SuperController@create')->name('create.administrator');
 Route::post('/administrator/store','SuperController@store')->name('store.administrator');***/
 
-//Super-Admin-User
+//Super-User
 Route::resource('/users','SuperUserController');
 Route::resource('/nusers','UserController');
+Route::resource('/sector','MasterSectorController');
+Route::resource('/subsector','MasterSubsectorController');
+Route::resource('/designation','MasterDesignationController');
+Route::resource('/qualification','MasterQualificationController');
+Route::resource('/year','MasterYearController');
+Route::resource('/status','MasterStatusController');
+Route::resource('/schoollevel','MasterSchoollevelController');
+Route::resource('/class','MasterClassController');
+Route::resource('/studentage','MasterStudentageController');
+Route::resource('/agricategory','MasterAgriCategoryController');
+Route::resource('/agriproduct','MasterAgriProductController');
+Route::resource('/fencing','MasterFencingController');
+Route::resource('/channel','MasterChannelController');
+Route::resource('/mode','MasterModeController');
+Route::resource('/type','MasterTypeController');
+Route::resource('/lstype','MasterLsTypeController');
+Route::resource('/heritage','MasterHeritageController');
 Route::get('/json-subsector','SuperUserController@sub_sector');
 
 

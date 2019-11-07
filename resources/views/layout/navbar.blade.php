@@ -53,25 +53,21 @@
                 <h3 class="text-primary">Chhoetse Dzong: Trongsa</center></h3>
             </div>
             <div class="col-md-6 col-lg-3 ml-auto admin-bar hidden-sm-down">
-                            <!-- Authentication Links -->
-                            @guest
-                            @else
-                                    <h5>
-                                        {{ Auth::user()->name}}</span>
-                                    </h5>
-            
-                                    <div>
-                                        <button><a class="dropdown-item" href="logout"
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a></button>
-            
-                                        <form id="logout-form" action="logout" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                        
-                                    </div>
-                            @endguest
+                
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    @else
+                    <h5>{{ Auth::user()->name }}</h5>
+                    <li class="dropdown">
+                        <a  href="/user/logout" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ 'App\User' == Auth::getProvider()->getModel() ? route('logout') : route('logout') }}" method="GET" style="display: none;">
+                                @csrf
+                            </form>
+                    </li>
+                        
+                    @endguest
+                </ul>
             </div>
         </div>
     </div>
