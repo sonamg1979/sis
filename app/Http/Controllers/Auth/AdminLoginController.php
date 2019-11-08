@@ -39,7 +39,7 @@ class AdminLoginController extends Controller
                     'EMPID' => $row->employee_id
                 ]);
             }
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('admindashboard'));
             //return view('admindashboard');
         }
         //unsuccesful, redirect back to the login
@@ -47,6 +47,6 @@ class AdminLoginController extends Controller
     }
     public function logout() {
         Auth::guard('admin')->logout();
-        return redirect()->guest(route( 'admin.dashboard' ));
+        return redirect()->guest(route( 'admindashboard' ));
     }
 }

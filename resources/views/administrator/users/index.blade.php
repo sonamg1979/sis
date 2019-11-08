@@ -19,7 +19,6 @@
                     <td>{{$row->email}}</td>
                     <td>{{$row->subsector}}</td>
                     <td><a href="/users/{{$row->id}}/edit" class="btn btn-sm btn-primary">Edit</td>
-                    <td><a href="/users/create" class="btn btn-sm btn-success">Add</td>
                     <td>{!!Form::open(['action'=>['SuperUserController@destroy',$row->id],'method'=>'POST','class'=>'pull-right'])!!}
                             {{Form::hidden('_method','DELETE')}}
                             {{Form::submit('DELETE',['class'=>'btn btn-sm btn-danger'])}}

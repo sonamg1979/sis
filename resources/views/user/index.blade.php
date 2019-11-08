@@ -1,7 +1,7 @@
 @extends('layouts.super-app')
 @section('content')
     <h3>General User Details</h3>
-    <a href="/users/create" class="btn btn-sm btn-success">Add New</a><br>
+    <a href="/nusers/create" class="btn btn-sm btn-success">Add New</a><br>
     <br>
     @if(count($users)>0)
         <table class="table table-striped">
@@ -17,7 +17,6 @@
                     <td>{{$row->name}}</td>
                     <td>{{$row->email}}</td>
                     <td><a href="/nusers/{{$row->id}}/edit" class="btn btn-sm btn-primary">Edit</td>
-                    <td><a href="/nusers/create" class="btn btn-sm btn-success">Add</td>
                     <td>{!!Form::open(['action'=>['UserController@destroy',$row->id],'method'=>'POST','class'=>'pull-right'])!!}
                             {{Form::hidden('_method','DELETE')}}
                             {{Form::submit('DELETE',['class'=>'btn btn-sm btn-danger'])}}

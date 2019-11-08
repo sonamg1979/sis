@@ -8,7 +8,7 @@
 }
 </style>
     <div class="card card-body" style="max-width: 40rem;">
-        <h3>New Administrator</h3><hr>
+        <h3>Edit: Administrator</h3><hr>
         {!! Form::open(['action' => ['UserController@update',$datas->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
             {{ csrf_field() }}
             <div class="form-group">

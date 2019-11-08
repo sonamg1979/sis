@@ -11,7 +11,8 @@
 |
 
 */
-
+Route::get('/admindashboard', 'AdminController@index')->name('admindashboard');
+Route::get('/superdashboard', 'SuperController@index')->name('superdashboard');
 //Route::get('/page','PagesController@index');
 //Route::get('/history','HistoryController@index');
 Route::resource('/profile','ProfileController');
