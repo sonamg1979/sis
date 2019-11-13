@@ -9,6 +9,7 @@ use DB;
 
 class AdminLoginController extends Controller
 {
+    protected $redirectTo = '/admin';
     public function __construct()
     {
         $this->middleware('guest:admin', ['except' => ['logout']]);
@@ -39,14 +40,16 @@ class AdminLoginController extends Controller
                     'EMPID' => $row->employee_id
                 ]);
             }
-            return redirect()->intended(route('admindashboard'));
+            //return redirect()->intended(route('admin.dashboard'));
             //return view('admindashboard');
         }
         //unsuccesful, redirect back to the login
         return redirect()->back()->withInput($request->only('email','remember'));
     }
-    public function logout() {
+    public function logout(Request $request) {
         Auth::guard('admin')->logout();
-        return redirect()->guest(route( 'admindashboard' ));
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->guest(route( 'admin.login' ));
     }
 }

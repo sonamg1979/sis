@@ -26,15 +26,18 @@ class SuperLoginController extends Controller
         //Attempt to log in
         if(Auth::guard('super')->attempt(['email' => $request->email, 'password' => $request->password],$request->remember))
         {
-            return redirect()->intended(route('superdashboard'));
+            //return redirect()->intended(route('super.dashboard'));
             //return view('superdashboard');
         }
         //unsuccesful, redirect back to the login
         return redirect()->back()->withInput($request->only('email','remember'));
     }
-    public function superlogout()
+    public function superlogout(Request $request)
     {
         Auth::guard('super')->logout();
-        return redirect()->guest(route( 'superdashboard' ));
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->guest(route( 'super.login' ))
+        ->with('message', array('type' => 'success', 'text' => 'You have successfully logged out'));
     }
 }

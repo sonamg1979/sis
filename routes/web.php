@@ -113,8 +113,8 @@ Route::prefix('dashboard')->group(function(){
 Route::prefix('admin')->group(function(){
     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/dashboard', 'AdminController@index')->name('admindashboard');
-    Route::get('/', 'AdminController@index')->name('admindashboard');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
     Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
     Route::post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::post('/password/reset','Auth\AdminResetPasswordController@reset');
@@ -124,8 +124,8 @@ Route::prefix('admin')->group(function(){
 Route::prefix('super')->group(function(){
     Route::get('/login','Auth\SuperLoginController@showLoginForm')->name('super.login');
     Route::post('/login','Auth\SuperLoginController@login')->name('super.login.submit');
-    Route::get('/dashboard', 'SuperController@index')->name('superdashboard');
-    Route::get('/', 'SuperController@index')->name('superdashboard');
+    Route::get('/dashboard', 'SuperController@index')->name('super.dashboard');
+    Route::get('/', 'SuperController@index')->name('super.dashboard');
     Route::get('/logout','Auth\SuperLoginController@superlogout')->name('super.logout');
     Route::post('/password/email','Auth\SuperForgotPasswordController@sendResetLinkEmail')->name('super.password.email');
     Route::post('/password/reset','Auth\SuperResetPasswordController@reset');
