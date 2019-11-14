@@ -24,18 +24,19 @@ color: red;
             </select>
         </div>
         {{Form::label('total','Location')}}
-        {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Location'])}}
+        {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Location','required'=>'required'])}}
         <br>
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
-                {{Form::label('total','Length of Fencing')}}
-                {{Form::text('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
+                {{Form::label('total','Length of Fencing (in km)')}}
+                {{Form::number('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_wet','No. of Household Beneficiaries')}}
-                {{Form::text('beneficiaries',0,['class'=>'form-control','id'=>'beneficiaries', 'placeholder' =>'beneficiaries'])}}
+                {{Form::number('beneficiaries',0,['class'=>'form-control','id'=>'beneficiaries', 'placeholder' =>'beneficiaries'])}}
             </div>  
         </div>
+         <center><strong>{{Form::label('total','Electric Fencing Area Coverage')}}</strong></center>
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Total dry land')}}

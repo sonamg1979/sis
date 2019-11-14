@@ -53,7 +53,7 @@ class AgriFacilityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'wet' =>'required',
+            'wet' =>'required|numeric',
             'c_wet' =>'required',
             'dry' =>'required',
             'c_dry' =>'required'

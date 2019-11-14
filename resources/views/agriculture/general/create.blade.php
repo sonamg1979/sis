@@ -24,20 +24,20 @@ color: red;
                 </select>
             </div>
             {{Form::label('location','Location of Channel')}}
-            {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Location'])}}
+            {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Location','required'=>'required'])}}
             <center><strong>{{Form::label('staff','Chennel Information')}}</strong></center>
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
-                    {{Form::label('length','Length of chennel(KM)')}}
-                    {{Form::text('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
+                    {{Form::label('length','Length of channel(KM)')}}
+                    {{Form::number('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
                 </div>
                 <div class="form-group col-md-4">
                     {{Form::label('hh','Benefeciaries household(No.)')}}
-                    {{Form::text('hh',0,['class'=>'form-control','id'=>'hh', 'placeholder' =>'Benefeciaries'])}}
+                    {{Form::number('hh',0,['class'=>'form-control','id'=>'hh', 'placeholder' =>'Benefeciaries'])}}
                 </div> 
                 <div class="form-group col-md-4">
                     {{Form::label('area','Command area (Acre)')}}
-                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
+                    {{Form::number('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
                 </div>    
             </div> 
             <div class="form-row border" style="color:coral">
@@ -77,11 +77,11 @@ color: red;
                 </div> 
                 <div class="form-group col-md-2">
                     {{Form::label('male','Males')}}
-                    {{Form::text('male',0,['class'=>'form-control','id'=>'male', 'placeholder' =>'0'])}}
+                    {{Form::number('male',0,['class'=>'form-control','id'=>'male', 'placeholder' =>'0'])}}
                 </div> 
                 <div class="form-group col-md-2">
                     {{Form::label('female','Females')}}
-                    {{Form::text('female',0,['class'=>'form-control','id'=>'female', 'placeholder' =>'0'])}}
+                    {{Form::number('female',0,['class'=>'form-control','id'=>'female', 'placeholder' =>'0'])}}
                 </div>
                 <div class="form-group col-md-4">
                     {{Form::label('status','Status of channel')}}

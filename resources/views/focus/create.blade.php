@@ -19,8 +19,8 @@ color: red;
             {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
             {{Form::label('focus','Description of Primary Focus')}}<br/>
             <textarea rows="4", cols="54" class="form-control" id="des" name="des" style="resize:none, "></textarea>
-            {{Form::label('focus','Estimated Budget')}}<br/>
-            {{Form::text('budget',null,['class'=>'form-control','id'=>'budget', 'placeholder' =>'Estimated Budget'])}}
+            {{Form::label('focus','Estimated Budget (in million)')}}<br/>
+            {{Form::number('budget',null,['class'=>'form-control','id'=>'budget', 'placeholder' =>'Estimated Budget'])}}
             {{Form::label('focus','Completion Date')}}<br/>
             {{Form::date('date', date('Y-m-d'), ['class'=>'form-control'])}}
             <br>

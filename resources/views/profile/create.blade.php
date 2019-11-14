@@ -12,7 +12,7 @@
         {!! Form::open(['action' => 'ProfileController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('employee_id','Employee ID')}}
-                {{Form::text('employee_id','',['class'=>'form-control','placeholder'=>'Employee id'])}}
+                {{Form::number('employee_id','',['class'=>'form-control','placeholder'=>'Employee id','required'=>'required'])}}
             </div>
             <div class="form-group">
                 {{Form::label('employee_name','Employee Name')}}
@@ -59,13 +59,14 @@
             </div>
             <div class="form-group">
                 {{Form::label('cid','CID Number')}}
-                {{Form::text('cid','',['class'=>'form-control','placeholder'=>'CID number'])}}
+                {{Form::number('cid','',['class'=>'form-control','placeholder'=>'CID number'])}}
             </div>
             <div class="form-group">
                 {{Form::label('email','E-mail Address')}}
                 {{Form::text('email','',['class'=>'form-control','placeholder'=>'abc@abc.com'])}}
             </div>
             <div class="form-group">
+                {{Form::label('passport','Upload Profile Picture')}}
                 {{Form::file('passport')}}
             </div>
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}

@@ -30,7 +30,7 @@ class UserController extends Controller
     public function index()
     {
         ///$activity = Activity::paginate(10);
-        $user = DB::table('Users')
+        $user = DB::table('users')
             ->paginate(10);
         return view('user.index')->with('users',$user);
     }

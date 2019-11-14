@@ -82,8 +82,11 @@ color: red;
                     </select>
                 </div>  
             </div>
-            <center><strong>{{Form::label('school','List of Indoor games facilities')}}</strong></center>
-            <textarea rows="4", cols="54" class="form-control" id="indoor" name="indoor" style="resize:none, ">{{$schoolinfos->indoor}}</textarea>
+            <div class="form-group">
+            <center><strong>{{ Form::label('indoor', 'List of Indoor games facilities') }}</strong></center>
+            {{ Form::textarea('indoor',$schoolinfos->indoor , array('class'=>'form-control','required'=>'required','rows'=>'5')) }}
+            </div>
+    
             <br>
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}

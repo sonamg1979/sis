@@ -27,11 +27,11 @@ color: red;
             </div>
             <div class="form-group">
                 {{Form::label('number','Number of Members')}}
-                {{Form::text('number',null,['class'=>'form-control','id'=>'number', 'placeholder' =>'Members'])}}
+                {{Form::number('number',null,['class'=>'form-control','id'=>'number', 'placeholder' =>'Members'])}}
             </div>
             <div class="form-group">
                 {{Form::label('registration_number','Number of Members')}}
-                {{Form::text('registration_number',null,['class'=>'form-control','id'=>'registration_number', 'placeholder' =>'Registration Number'])}}
+                {{Form::text('registration_number',null,['class'=>'form-control','id'=>'registration_number', 'placeholder' =>'Registration Number','required'=>'required'])}}
             </div>
             <br>
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}

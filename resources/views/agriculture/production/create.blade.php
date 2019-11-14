@@ -41,12 +41,12 @@ color: red;
             <center><strong>{{Form::label('staff','Producation details')}}</strong></center>
             <div class="form-row border" style="color:coral">
                 <div class="form-product col-md-6">
-                    {{Form::label('staff','Area/Number of Trees')}}
-                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Total Area/ No of trees'])}}
+                    {{Form::label('staff','Area/Number of Trees (per tree)')}}
+                    {{Form::number('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Total Area/ No of trees'])}}
                 </div>
                 <div class="form-product col-md-6">
-                    {{Form::label('staff','Productions')}}
-                    {{Form::text('production',0,['class'=>'form-control','id'=>'production', 'placeholder' =>'Total production'])}}
+                    {{Form::label('staff','Productions (kg/acre)')}}
+                    {{Form::number('production',0,['class'=>'form-control','id'=>'production', 'placeholder' =>'Total production'])}}
                 </div>  
             </div> 
             

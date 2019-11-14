@@ -74,12 +74,12 @@ class ActivityController extends Controller
         $this->validate($request,[
             'fyear' =>'required',
             'budget' =>'required',
-            'activity' =>'required',
+            'activity' =>'required|min:5',
             'sdate' =>'required',
             'edate' =>'required',
             'engineer' =>'required',
             'budget_line' =>'required',
-            'allotted_budget' =>'required'
+            'allotted_budget' =>'required|numeric'
         ]);
         
         $activity = new Activity;
@@ -154,12 +154,12 @@ class ActivityController extends Controller
         $this->validate($request,[
             'fyear' =>'required',
             'budget' =>'required',
-            'activity' =>'required',
+            'activity' =>'required|min:5',
             'sdate' =>'required',
             'edate' =>'required',
             'engineer' =>'required',
             'budget_line' =>'required',
-            'allotted_budget' =>'required'
+            'allotted_budget' =>'required|numeric'
         ]);
         
         $activity = activity::find($id);

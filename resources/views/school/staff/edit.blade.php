@@ -23,33 +23,33 @@
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('tmale',$schoolinfos->tmale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::text('tmale',$schoolinfos->tmale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('tfemale',$schoolinfos->tfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::text('tfemale',$schoolinfos->tfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div> 
             <center><strong>{{Form::label('staff','Contract Teacher')}}</strong></center>
             <div class="form-row border">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('cmale',$schoolinfos->cmale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::text('cmale',$schoolinfos->cmale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('cfemale',$schoolinfos->cfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::text('cfemale',$schoolinfos->cfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div>  
             <center><strong>{{Form::label('staff','Non-Teaching Staff')}}</strong></center>
             <div class="form-row border">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('smale',$schoolinfos->smale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::text('smale',$schoolinfos->smale,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('sfemale',$schoolinfos->sfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::text('sfemale',$schoolinfos->sfemale,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div>   
             <br>

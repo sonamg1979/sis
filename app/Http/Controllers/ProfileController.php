@@ -58,11 +58,11 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'employee_id' =>'required',
+            'employee_id' =>'required|numeric',
             'employee_name' =>'required',
             'sex' =>'required',
             'dob' =>'required',
-            'cid' =>'required',
+            'cid' =>'required|numeric',
             'citizen' =>'required',
             'type' =>'required',
             'cid' =>'required',
@@ -150,13 +150,13 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'employee_id' =>'required',
+            'employee_id' =>'required|numeric',
             'employee_name' =>'required',
             'sex' =>'required',
             'citizen' =>'required',
             'type' =>'required',
             'dob' =>'required',
-            'cid' =>'required',
+            'cid' =>'required|numeric',
             'email' =>'required',
             'passport' =>'image|nullable|max:1999'
         ]);
