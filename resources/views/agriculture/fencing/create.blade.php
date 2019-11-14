@@ -29,7 +29,7 @@ color: red;
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Length of Fencing (in km)')}}
-                {{Form::number('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
+                {{Form::text('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_wet','No. of Household Beneficiaries')}}

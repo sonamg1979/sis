@@ -30,11 +30,11 @@ color: red;
                 
                 <div class="form-group col-md-6">
                     {{Form::label('total','Dry')}}
-                    {{Form::number('dry',0,['class'=>'form-control','id'=>'dry', 'placeholder' =>'Dry'])}}
+                    {{Form::text('dry',0,['class'=>'form-control','id'=>'dry', 'placeholder' =>'Dry'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('c_orchard','Wet')}}
-                    {{Form::number('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'Wet'])}}
+                    {{Form::text('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'Wet'])}}
                 </div> 
             </div>
             <div class="form-row border">

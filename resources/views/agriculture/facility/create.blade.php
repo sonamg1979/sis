@@ -19,33 +19,33 @@ color: red;
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Total')}}
-                {{Form::number('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'total','required'=>'required'])}}
+                {{Form::text('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'total','required'=>'required'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_wet','Land Cultivated')}}
-                {{Form::number('c_wet',0,['class'=>'form-control','id'=>'c_wet', 'placeholder' =>'cultivated'])}}
+                {{Form::text('c_wet',0,['class'=>'form-control','id'=>'c_wet', 'placeholder' =>'cultivated'])}}
             </div>  
         </div>
         Dry Land
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Total')}}
-                {{Form::number('dry',0,['class'=>'form-control','id'=>'dry', 'placeholder' =>'total'])}}
+                {{Form::text('dry',0,['class'=>'form-control','id'=>'dry', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_dry','Land Cultivated')}}
-                {{Form::number('c_dry',0,['class'=>'form-control','id'=>'c_dry', 'placeholder' =>'cultivated'])}}
+                {{Form::text('c_dry',0,['class'=>'form-control','id'=>'c_dry', 'placeholder' =>'cultivated'])}}
             </div>  
         </div>
         Orchard (if any...)
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Total')}}
-                {{Form::number('orchard',0,['class'=>'form-control','id'=>'orchard', 'placeholder' =>'total'])}}
+                {{Form::text('orchard',0,['class'=>'form-control','id'=>'orchard', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_orchard','Land Cultivated')}}
-                {{Form::number('c_orchard',0,['class'=>'form-control','id'=>'c_orchard', 'placeholder' =>'cultivated'])}}
+                {{Form::text('c_orchard',0,['class'=>'form-control','id'=>'c_orchard', 'placeholder' =>'cultivated'])}}
             </div>  
         </div>
         <h4>Facilities</h4>
