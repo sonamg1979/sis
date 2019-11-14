@@ -51,7 +51,7 @@
             
             <div class="form-group">
                 {{Form::label('abudget','Allotted Budget (in million)')}}
-                {{Form::number('allotted_budget','',['class'=>'form-control','placeholder'=>'Budget Allotted','required'=>'required'])}}
+                {{Form::text('allotted_budget','',['class'=>'form-control','placeholder'=>'Budget Allotted','required'=>'required'])}}
             </div>
             <div class="form-group">
                 <label for="">Site Engineer</label>
