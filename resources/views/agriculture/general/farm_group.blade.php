@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Estd. Year</th>
+                <th>Gewog</th>
                 <th>Group Name</th>
                 <th>Member</th>
                 <th>Registration Number</th>
@@ -22,6 +23,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->group_name}}</td>
                     <td>{{$row->number}}</td>
                     <td>{{$row->registration_number}}</td>

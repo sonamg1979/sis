@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Year</th>
+                <th>Gewog</th>
                 <th>Location</th>
                 <th>Dry</th>
                 <th>Wet</th>
@@ -23,6 +24,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->location}}</td>
                     <td>{{$row->dry}}</td>
                     <td>{{$row->wet}}</td>

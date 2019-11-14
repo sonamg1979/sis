@@ -435,9 +435,10 @@ class DashboardController extends Controller
             ->join('construct_types', 'agrigenerals.construct_type', '=', 'construct_types.id')
             ->join('construct_modes', 'agrigenerals.construct_mode', '=', 'construct_modes.id')
             ->join('chennel_types', 'agrigenerals.chennel_type', '=', 'chennel_types.id')
+            ->join('subsector', 'agrigenerals.subsector', '=', 'subsector.id')
             ->select('agrigenerals.id', 'agrigenerals.location', 'agrigenerals.length', 
             'agrigenerals.benefeciaries', 'agrigenerals.area', 'agrigenerals.year',
-            'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female',
+            'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female', 'subsector.subsector',
             'agrigenerals.status', 'construct_modes.construct_mode', 'construct_types.construct_type','chennel_types.chennel_type')
             ->paginate(10);
         return view('agriculture.general.irrigation')->with('datas',$info);
@@ -447,9 +448,10 @@ class DashboardController extends Controller
         $info = DB::table('farm_roads')
             ->join('construct_types', 'farm_roads.construct_type', '=', 'construct_types.id')
             ->join('construct_modes', 'farm_roads.construct_mode', '=', 'construct_modes.id')
+            ->join('subsector', 'farm_roads.subsector', '=', 'subsector.id')
             ->select('farm_roads.id', 'farm_roads.road_name', 'farm_roads.chiwog', 'farm_roads.length', 
             'farm_roads.benefeciaries', 'farm_roads.year',
-            'farm_roads.group', 'farm_roads.male', 'farm_roads.female',
+            'farm_roads.group', 'farm_roads.male', 'farm_roads.female', 'subsector.subsector',
             'farm_roads.status', 'construct_modes.construct_mode', 'construct_types.construct_type')
             ->get();
         return view('agriculture.general.farm_road')->with('datas',$info);
@@ -459,8 +461,9 @@ class DashboardController extends Controller
         $info = DB::table('electric_fencings')
             ->join('status', 'electric_fencings.status', '=', 'status.id')
             ->join('fencing_type', 'electric_fencings.type', '=', 'fencing_type.id')
+            ->join('subsector', 'electric_fencings.subsector', '=', 'subsector.id')
             ->select('electric_fencings.id', 'electric_fencings.location', 'electric_fencings.year', 
-            'electric_fencings.beneficiaries', 'electric_fencings.wet', 'electric_fencings.dry',
+            'electric_fencings.beneficiaries', 'electric_fencings.wet', 'electric_fencings.dry', 'subsector.subsector',
             'electric_fencings.length', 'electric_fencings.remarks', 'status.status', 'fencing_type.type')
             ->get();
         return view('agriculture.general.electric_fencing')->with('datas',$info);
@@ -468,6 +471,7 @@ class DashboardController extends Controller
     public function agri_land_development()
     {
         $info = DB::table('land_developments')
+        ->join('subsector', 'land_developments.subsector', '=', 'subsector.id')
         ->get();
         return view('agriculture.general.land_development')->with('datas',$info);
     }
@@ -484,6 +488,7 @@ class DashboardController extends Controller
     public function livestock_group()
     {
         $info = DB::table('livestock_groups')
+        ->join('subsector', 'livestock_groups.subsector', '=', 'subsector.id')
         ->get();
         return view('livestock.view.group')->with('datas',$info);
     }

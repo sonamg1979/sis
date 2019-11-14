@@ -40,6 +40,10 @@
                 @enderror
             </div>
             <div class="form-group">
+                {{Form::label('name','Employee ID -- only for Engineers')}}
+                {{Form::text('employeeid',$datas->employee_id,['class'=>'form-control','placeholder'=>'EMployee ID'])}}
+            </div>
+            <div class="form-group">
                 {{Form::label('name','Name of User')}}
                 {{Form::text('name',$datas->name,['class'=>'form-control','placeholder'=>'User Name'])}}
             </div>

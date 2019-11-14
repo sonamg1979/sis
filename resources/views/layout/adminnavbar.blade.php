@@ -62,7 +62,7 @@
                             </li>
                             </ul>
                         </li>
-                        @if(session('SEC')==1 && session('SUBSEC')==4)
+                        @if(session('SEC')==1 && session('SUBSEC')==14)
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Culture</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

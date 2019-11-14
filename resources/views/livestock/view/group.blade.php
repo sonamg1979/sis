@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Estd. Year</th>
+                <th>Gewog</th>
                 <th>Name of Farmers' Group/Cooperatives</th>
                 <th>Registration Number</th>
                 <th>Male</th>
@@ -24,6 +25,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->group_name}}</td>
                     <td>{{$row->registration_number}}</td>
                     <td>{{$row->male}}</td>

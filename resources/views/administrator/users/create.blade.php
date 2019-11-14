@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="">Agency</label>
                 <select id="subsector" name="subsector" class="form-control" required>
-                    <option value="">Select Sector</option>
+                    <option value="">Select</option>
                     
                 </select>
             </div>
@@ -35,6 +35,10 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+            </div>
+            <div class="form-group">
+                {{Form::label('name','Employee ID --Only for Engineers')}}
+                {{Form::text('employeeid','',['class'=>'form-control','placeholder'=>'Employee ID'])}}
             </div>
             <div class="form-group">
                 {{Form::label('name','Name of User')}}

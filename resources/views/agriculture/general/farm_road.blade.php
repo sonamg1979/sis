@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Year</th>
+                <th>Gewog</th>
                 <th>Road Name</th>
                 <th>Chiwog</th>
                 <th>Existing length (KM)</th>
@@ -29,6 +30,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->road_name}}</td>
                     <td>{{$row->chiwog}}</td>
                     <td>{{$row->length}}</td>

@@ -76,6 +76,7 @@ class SuperUserController extends Controller
         $activity->subsector = $request->input('subsector');
         $activity->email = $request->input('email');
         $activity->name = $request->input('name');
+        $activity->employee_id = $request->input('employeeid');
         $activity->password = Hash::make($request->input('password'));
         $activity->save();
 
@@ -131,6 +132,7 @@ class SuperUserController extends Controller
         $activity->subsector = $request->input('subsector');
         $activity->email = $request->input('email');
         $activity->name = $request->input('name');
+        $activity->employee_id = $request->input('employeeid');
         $activity->save();
         return redirect('/users')->with('success','Updated successfully!!');
     }

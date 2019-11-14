@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Construct Year</th>
+                <th>Gewog</th>
                 <th>Location</th>
                 <th>Length (KM)</th>
                 <th>Benefeciaries (HH)</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->location}}</td>
                     <td>{{$row->length}}</td>
                     <td>{{$row->benefeciaries}}</td>
@@ -37,10 +39,10 @@
                     <td>{{$row->construct_mode}}</td>
                     <td>{{$row->construct_type}}</td>
                     <td>{{$row->chennel_type}}</td>
-                    <td>{{$row->associations}}</td>
+                    <td>{{$row->associations == 'Y' ? 'Yes' : 'No' }}</td>
                     <td>{{$row->male}}</td>
                     <td>{{$row->female}}</td>
-                    <td>{{$row->status}}</td>
+                    <td>{{$row->status == 'F' ? 'Functional' : 'Non-functional' }}</td>
                 </tr> 
             @endforeach
             </tbody>

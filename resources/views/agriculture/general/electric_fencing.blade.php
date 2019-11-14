@@ -12,6 +12,7 @@
             <tr>
                 <th>Sl</th>
                 <th>Year</th>
+                <th>Gewog</th>
                 <th>Location</th>
                 <th>Length</th>
                 <th>Benefeciaries (HH)</th>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$row->year}}</td>
+                    <td>{{$row->subsector}}</td>
                     <td>{{$row->location}}</td>
                     <td>{{$row->length}}</td>
                     <td>{{$row->beneficiaries}}</td>
