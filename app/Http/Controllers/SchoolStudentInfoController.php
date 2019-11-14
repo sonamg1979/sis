@@ -71,8 +71,8 @@ class SchoolStudentInfoController extends Controller
             'year' =>'required',
             'class' =>'required',
             'group' =>'required',
-            'male' =>'required',
-            'female' =>'required'
+            'male' =>'required|numeric',
+            'female' =>'required|numeric'
         ]);
 
         $studentinfo = new SchoolStudentInfo;
@@ -126,8 +126,8 @@ class SchoolStudentInfoController extends Controller
             'year' =>'required',
             'class' =>'required',
             'group' =>'required',
-            'male' =>'required',
-            'female' =>'required'
+            'male' =>'required|numeric',
+            'female' =>'required|numeric'
         ]);
         
         $studentinfo = SchoolStudentInfo::find($id);

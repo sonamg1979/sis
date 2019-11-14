@@ -64,13 +64,13 @@ class ElectricFencingController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'location' =>'required',
+            'location' =>'required|min:4',
             'length' =>'required',
             'beneficiaries' =>'required',
             'wet' =>'required',
             'dry' =>'required',
             'type' =>'required',
-            'status' =>'required'
+            'remarks' =>'required'
         ]);
 
         $info = new ElectricFencing;
@@ -129,13 +129,13 @@ class ElectricFencingController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'location' =>'required',
+            'location' =>'required|min:4',
             'length' =>'required',
             'beneficiaries' =>'required',
             'wet' =>'required',
             'dry' =>'required',
             'type' =>'required',
-            'status' =>'required'
+            'remarks' =>'required'
         ]);
         
         $info = ElectricFencing::find($id);

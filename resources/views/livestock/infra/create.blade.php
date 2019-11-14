@@ -12,48 +12,48 @@ color: red;
 }
 </style>
     <div class="card card-body" style="max-width: 40rem;">
-        <h3>New: Livestock infrastructure</h3><hr>
+        <h3>New: Livestock infrastructure (in numbers)</h3><hr>
         {!! Form::open(['action' => 'LivestockInfraController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('ais','Artifical Insemination Center')}}
-                {{Form::text('ais',0,['class'=>'form-control','id'=>'ais', 'placeholder' =>'ais'])}}
+                {{Form::number('ais',0,['class'=>'form-control','id'=>'ais', 'placeholder' =>'ais'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('bio','Bio Gas')}}
-                {{Form::text('biogas',0,['class'=>'form-control','id'=>'biogas', 'placeholder' =>'biogas'])}}
+                {{Form::number('biogas',0,['class'=>'form-control','id'=>'biogas', 'placeholder' =>'biogas'])}}
             </div>  
         </div>
         Poultry Farm
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-4">
                 {{Form::label('total','Micro Farming')}}
-                {{Form::text('poultry_micro',0,['class'=>'form-control','id'=>'poultry_micro', 'placeholder' =>'total'])}}
+                {{Form::number('poultry_micro',0,['class'=>'form-control','id'=>'poultry_micro', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-4">
                 {{Form::label('c_dry','Commercial Farming')}}
-                {{Form::text('poultry_commercial',0,['class'=>'form-control','id'=>'poultry_commercial', 'placeholder' =>'cultivated'])}}
+                {{Form::number('poultry_commercial',0,['class'=>'form-control','id'=>'poultry_commercial', 'placeholder' =>'cultivated'])}}
             </div>  
             <div class="form-group col-md-4">
                 {{Form::label('c_dry','Broiler Farming')}}
-                {{Form::text('poultry_broiler',0,['class'=>'form-control','id'=>'poultry_broiler', 'placeholder' =>'cultivated'])}}
+                {{Form::number('poultry_broiler',0,['class'=>'form-control','id'=>'poultry_broiler', 'placeholder' =>'cultivated'])}}
             </div>
         </div>
         Diary Farming
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Micro Farming')}}
-                {{Form::text('diary_micro',0,['class'=>'form-control','id'=>'diary_micro', 'placeholder' =>'total'])}}
+                {{Form::number('diary_micro',0,['class'=>'form-control','id'=>'diary_micro', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_orchard','Commercial Farming')}}
-                {{Form::text('diary_commercial',0,['class'=>'form-control','id'=>'diary_commercial', 'placeholder' =>'cultivated'])}}
+                {{Form::number('diary_commercial',0,['class'=>'form-control','id'=>'diary_commercial', 'placeholder' =>'cultivated'])}}
             </div>  
         </div>
         <div class="form-row border" style="color:navy">
             <div class="form-group col-md-3">
                 {{Form::label('total','Milk processing unit')}}
-                {{Form::text('milk_processing',0,['class'=>'form-control','id'=>'milk_processing', 'placeholder' =>'total'])}}
+                {{Form::number('milk_processing',0,['class'=>'form-control','id'=>'milk_processing', 'placeholder' =>'total'])}}
             </div>
         </div>
        

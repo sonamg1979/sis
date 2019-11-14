@@ -70,7 +70,7 @@ class AgriGeneralController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'location' =>'required',
+            'location' =>'required|min:5',
             'length' =>'required',
             'hh' =>'required',
             'area' =>'required',
@@ -143,7 +143,7 @@ class AgriGeneralController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'location' =>'required',
+            'location' =>'required|min:5',
             'length' =>'required',
             'hh' =>'required',
             'area' =>'required',

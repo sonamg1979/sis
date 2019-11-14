@@ -34,11 +34,11 @@ color: red;
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
                     {{Form::label('number','Male')}}
-                    {{Form::text('male',0,['class'=>'form-control','id'=>'male', 'placeholder' =>'Members'])}}
+                    {{Form::number('male',0,['class'=>'form-control','id'=>'male', 'placeholder' =>'Members'])}}
                 </div>
                 <div class="form-group col-md-4">
                     {{Form::label('number','Female')}}
-                    {{Form::text('female',0,['class'=>'form-control','id'=>'female', 'placeholder' =>'Members'])}}
+                    {{Form::number('female',0,['class'=>'form-control','id'=>'female', 'placeholder' =>'Members'])}}
                 </div>
             </div>
             <br>

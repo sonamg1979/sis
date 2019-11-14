@@ -75,6 +75,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <button type="submit" value="Data Administrator Login"class="btn btn-link">
+                                    <a href="{{ __('admin/login')}}">Data Administrator Login</a>
+                                </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

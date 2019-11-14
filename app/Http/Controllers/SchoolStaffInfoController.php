@@ -55,13 +55,13 @@ class SchoolStaffInfoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'year' =>'required',
-            'tmale' =>'required',
-            'tfemale' =>'required',
-            'cmale' =>'required',
-            'cfemale' =>'required',
-            'smale' =>'required',
-            'sfemale' =>'required'
+            'year' =>'required|numeric',
+            'tmale' =>'required|numeric',
+            'tfemale' =>'required|numeric',
+            'cmale' =>'required|numeric',
+            'cfemale' =>'required|numeric',
+            'smale' =>'required|numeric',
+            'sfemale' =>'required|numeric'
         ]);
 
         $schoolinfo = new SchoolStaffInfo;
@@ -110,13 +110,13 @@ class SchoolStaffInfoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'year' =>'required',
-            'tmale' =>'required',
-            'tfemale' =>'required',
-            'cmale' =>'required',
-            'cfemale' =>'required',
-            'smale' =>'required',
-            'sfemale' =>'required'
+            'year' =>'required|numeric',
+            'tmale' =>'required|numeric',
+            'tfemale' =>'required|numeric',
+            'cmale' =>'required|numeric',
+            'cfemale' =>'required|numeric',
+            'smale' =>'required|numeric',
+            'sfemale' =>'required|numeric'
         ]);
         
         $schoolinfo = SchoolStaffInfo::find($id);

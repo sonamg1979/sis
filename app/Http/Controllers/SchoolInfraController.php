@@ -56,8 +56,12 @@ class SchoolInfraController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'schoolname' =>'required',
-            'location' =>'required'
+            'schoolname' =>'required|min:5',
+            'location' =>'required',
+            'indoor'=>'required',
+            'area' =>'required|numeric',
+            'hall' =>'required|numeric',
+            'classroom'=>'required|numeric'
         ]);
 
         $schoolinfo = new SchoolInfra;

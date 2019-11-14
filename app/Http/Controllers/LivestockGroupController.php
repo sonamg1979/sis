@@ -27,10 +27,10 @@ class LivestockGroupController extends Controller
      */
     public function index()
     {
-        $info = DB::table('livestock_groups')
+        $groups = DB::table('livestock_groups')
         ->where('subsector', '=', session('SUBSEC'))
         ->paginate(10);
-        return view('livestock.livestockgroup.index')->with('groups',$group);
+        return view('livestock.livestockgroup.index')->with('groups',$groups);
     }
 
     /**
@@ -53,7 +53,7 @@ class LivestockGroupController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'title' =>'required',
+            'title' =>'required|min:4',
             'male' =>'required',
             'female' =>'required',
             'registration_number' =>'required'
@@ -106,7 +106,7 @@ class LivestockGroupController extends Controller
     {
         $this->validate($request,[
             'year' =>'required',
-            'title' =>'required',
+            'title' =>'required|min:4',
             'male' =>'required',
             'female' =>'required',
             'registration_number' =>'required'

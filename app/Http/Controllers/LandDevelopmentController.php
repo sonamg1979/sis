@@ -27,10 +27,10 @@ class LandDevelopmentController extends Controller
      */
     public function index()
     {
-        $group = DB::table('land_developments')
+        $development = DB::table('land_developments')
         ->where('subsector', '=', session('SUBSEC'))
-        ->get();
-        return view('agriculture.landdevelopment.index')->with('development',$group);
+        ->paginate(10);
+        return view('agriculture.landdevelopment.index')->with('development',$development);
     }
 
     /**

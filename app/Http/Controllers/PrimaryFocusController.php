@@ -52,10 +52,10 @@ class PrimaryFocusController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' =>'required',
-            'des' =>'required',
-            'budget' =>'required',
-            'date' =>'required'
+            'title' =>'required|min:5',
+            'des' =>'required|min:6',
+            'budget' =>'required|numeric',
+            'date' =>'required|date'
         ]);
         
         $focus = new PrimaryFocus;
@@ -100,10 +100,10 @@ class PrimaryFocusController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' =>'required',
-            'des' =>'required',
-            'budget' =>'required',
-            'date' =>'required'
+            'title' =>'required|min:5',
+            'des' =>'required|min:6',
+            'budget' =>'required|numeric',
+            'date' =>'required|date'
         ]);
         
         $focus = PrimaryFocus::find($id);

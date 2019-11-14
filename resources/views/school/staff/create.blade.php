@@ -27,33 +27,33 @@ color: red;
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('tmale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::number('tmale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('tfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::number('tfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div> 
             <center><strong>{{Form::label('staff','Contract Teacher')}}</strong></center>
             <div class="form-row border">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('cmale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::number('cmale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('cfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::number('cfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div>  
             <center><strong>{{Form::label('staff','Non-Teaching Staff')}}</strong></center>
             <div class="form-row border">
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Male')}}
-                    {{Form::text('smale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male'])}}
+                    {{Form::number('smale',null,['class'=>'form-control','id'=>'male', 'placeholder' =>'Total Male','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-6">
                     {{Form::label('staff','Female')}}
-                    {{Form::text('sfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female'])}}
+                    {{Form::number('sfemale',null,['class'=>'form-control','id'=>'female', 'placeholder' =>'Total Female','required'=>'required'])}}
                 </div>  
             </div>  
             <br>

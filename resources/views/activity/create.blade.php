@@ -21,15 +21,15 @@
             </div>
             <div class="form-group">
                 {{Form::label('activity','Activity')}}
-                {{Form::textarea('activity',null,['class'=>'form-control', 'rows' => 2, 'cols' => 40, 'placeholder' =>'Name of Activity'])}}
+                {{Form::textarea('activity',null,['class'=>'form-control', 'rows' => 2, 'cols' => 40, 'placeholder' =>'Name of Activity','required'=>'required'])}}
             </div>
             <div class="form-group">
                 {{Form::label('sdate','Start Date')}}<br/>
-                {{Form::date('sdate', date('Y-m-d'), ['class'=>'form-control'])}}
+                {{Form::date('sdate', date('Y-m-d'), ['class'=>'form-control','required'=>'required'])}}
             </div>
             <div class="form-group">
                 {{Form::label('edate','End Date')}}<br/>
-                {{Form::date('edate', date('Y-m-d'), ['class'=>'form-control'])}}
+                {{Form::date('edate', date('Y-m-d'), ['class'=>'form-control','required'=>'required'])}}
             </div>
             <div class="form-group">
                 <label for="">Budget</label>
@@ -51,7 +51,7 @@
             
             <div class="form-group">
                 {{Form::label('abudget','Allotted Budget (in million)')}}
-                {{Form::text('allotted_budget','',['class'=>'form-control','placeholder'=>'Budget Allotted'])}}
+                {{Form::number('allotted_budget','',['class'=>'form-control','placeholder'=>'Budget Allotted','required'=>'required'])}}
             </div>
             <div class="form-group">
                 <label for="">Site Engineer</label>

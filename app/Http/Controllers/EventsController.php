@@ -50,7 +50,7 @@ class EventsController extends Controller
     {
         $this->validate($request,[
             'year' => 'required',
-            'title' =>'required',
+            'title' =>'required|min:5',
             'sdate' =>'required',
             'edate' =>'required',
         ]);
@@ -104,7 +104,7 @@ class EventsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'year' => 'required',
+            'year' => 'required|min:5',
             'title' =>'required',
             'sdate' =>'required',
             'edate' =>'required',

@@ -13,14 +13,14 @@ color: red;
 </style>
     <div class="card card-body" style="max-width: 40rem;">
         <h3>Data Entry: School Information</h3><hr>
-        {!! Form::open(['action' => 'SchoolInfraController@store',$schoolinfos->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['action' => 'SchoolInfraController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('school','School Name')}}
-                {{Form::text('schoolname',null,['class'=>'form-control','id'=>'schoolname', 'placeholder' =>'School Name'])}}
+                {{Form::text('schoolname',null,['class'=>'form-control','id'=>'schoolname', 'placeholder' =>'School Name','required'=>'required'])}}
             </div>
             <div class="form-group">
                 {{Form::label('school','Location')}}
-                {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Name of School Location'])}}
+                {{Form::text('location',null,['class'=>'form-control','id'=>'location', 'placeholder' =>'Name of School Location','required'=>'required'])}}
             </div>
             <div class="form-group">
                 <label for="">School Level</label>
@@ -40,19 +40,19 @@ color: red;
                     @endfor
                 </select>
             </div>
-            <center><strong>{{Form::label('school','Infrastructure')}}</strong></center>
+            <center><strong>{{Form::label('school','Infrastructures')}}</strong></center>
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
-                    {{Form::label('school','Area')}}
-                    {{Form::text('area',null,['class'=>'form-control','id'=>'area', 'placeholder' =>'Total area of campus', 'required'=>'required'])}}
+                    {{Form::label('school','Area (in acres)')}}
+                    {{Form::number('area','',['class'=>'form-control','id'=>'area', 'placeholder' =>'Total area of campus', 'step'=>'any','required'=>'required'])}}
                 </div>
                 <div class="form-group col-md-4">
                     {{Form::label('school','Multipurpose Hall')}}
-                    {{Form::text('hall',null,['class'=>'form-control','id'=>'hall', 'placeholder' =>'No. of Multipurpose Hall', 'required'=>'required'])}}
+                    {{Form::number('hall',null,['class'=>'form-control','id'=>'hall', 'placeholder' =>'No. of Multipurpose Hall', 'required'=>'required'])}}
                 </div>  
                 <div class="form-group col-md-4">
                     {{Form::label('school','Class')}}
-                    {{Form::text('classroom',null,['class'=>'form-control','id'=>'classroom', 'placeholder' =>'Total classrooms', 'required'=>'required'])}}
+                    {{Form::number('classroom',null,['class'=>'form-control','id'=>'classroom', 'placeholder' =>'Total classrooms', 'required'=>'required'])}}
                 </div>
             </div> 
             <center><strong>{{Form::label('school','Sport Facilities')}}</strong></center>
@@ -82,8 +82,12 @@ color: red;
                     </select>
                 </div>  
             </div>
-            <center><strong>{{Form::label('school','List of Indoor games facilities')}}</strong></center>
-            <textarea rows="4", cols="54" class="form-control" id="indoor" name="indoor" style="resize:none, "></textarea>
+            <div class="form-group">
+            <center><strong>{{ Form::label('indoor', 'List of Indoor games facilities') }}</strong></center>
+            {{ Form::textarea('indoor', '', array('class'=>'form-control','required'=>'required','rows'=>'5')) }}
+            </div>
+            
+           
             <br>
             {{Form::submit('Save',['class'=>'btn btn-primary'])}}
     </div>

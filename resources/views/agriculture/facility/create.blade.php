@@ -19,7 +19,7 @@ color: red;
         <div class="form-row border" style="color:coral">
             <div class="form-group col-md-6">
                 {{Form::label('total','Total')}}
-                {{Form::text('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'total'])}}
+                {{Form::text('wet',0,['class'=>'form-control','id'=>'wet', 'placeholder' =>'total','required'=>'required'])}}
             </div>
             <div class="form-group col-md-6">
                 {{Form::label('c_wet','Land Cultivated')}}
@@ -52,55 +52,55 @@ color: red;
         <div class="form-row border" style="color:navy">
             <div class="form-group col-md-3">
                 {{Form::label('total','Food pro. unit')}}
-                {{Form::text('food_processing',0,['class'=>'form-control','id'=>'food_processing', 'placeholder' =>'total'])}}
+                {{Form::number('food_processing',0,['class'=>'form-control','id'=>'food_processing', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Rice & flour Mill')}}
-                {{Form::text('mills',0,['class'=>'form-control','id'=>'mills', 'placeholder' =>'cultivated'])}}
+                {{Form::number('mills',0,['class'=>'form-control','id'=>'mills', 'placeholder' =>'cultivated'])}}
             </div> 
             <div class="form-group col-md-3">
                 {{Form::label('total','Traditional Mill')}}
-                {{Form::text('tradition_mills',0,['class'=>'form-control','id'=>'tradition_mills', 'placeholder' =>'total'])}}
+                {{Form::number('tradition_mills',0,['class'=>'form-control','id'=>'tradition_mills', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Oil Expeller')}}
-                {{Form::text('oil_expeller',0,['class'=>'form-control','id'=>'oil_expeller', 'placeholder' =>'cultivated'])}}
+                {{Form::number('oil_expeller',0,['class'=>'form-control','id'=>'oil_expeller', 'placeholder' =>'cultivated'])}}
             </div>  
         </div>
         <div class="form-row border" style="color:navy">
             <div class="form-group col-md-3">
                 {{Form::label('total','Corn Flake')}}
-                {{Form::text('corn_flake',0,['class'=>'form-control','id'=>'corn_flake', 'placeholder' =>'total'])}}
+                {{Form::number('corn_flake',0,['class'=>'form-control','id'=>'corn_flake', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Electric Dryer')}}
-                {{Form::text('electric_dryer',0,['class'=>'form-control','id'=>'electric_dryer', 'placeholder' =>'cultivated'])}}
+                {{Form::number('electric_dryer',0,['class'=>'form-control','id'=>'electric_dryer', 'placeholder' =>'cultivated'])}}
             </div> 
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Potatoe deep Fryer')}}
-                {{Form::text('potatoe_fryer',0,['class'=>'form-control','id'=>'potatoe_fryer', 'placeholder' =>'cultivated'])}}
+                {{Form::number('potatoe_fryer',0,['class'=>'form-control','id'=>'potatoe_fryer', 'placeholder' =>'cultivated'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('total','Power Tiller')}}
-                {{Form::text('power_tiller',0,['class'=>'form-control','id'=>'power_tiller', 'placeholder' =>'total'])}}
+                {{Form::number('power_tiller',0,['class'=>'form-control','id'=>'power_tiller', 'placeholder' =>'total'])}}
             </div>  
         </div>
         <div class="form-row border" style="color:navy">
             <div class="form-group col-md-3">
                 {{Form::label('total','Tractor')}}
-                {{Form::text('tractor',0,['class'=>'form-control','id'=>'tractor', 'placeholder' =>'total'])}}
+                {{Form::number('tractor',0,['class'=>'form-control','id'=>'tractor', 'placeholder' =>'total'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Transplanter')}}
-                {{Form::text('transplanter',0,['class'=>'form-control','id'=>'transplanter', 'placeholder' =>'cultivated'])}}
+                {{Form::number('transplanter',0,['class'=>'form-control','id'=>'transplanter', 'placeholder' =>'cultivated'])}}
             </div> 
             <div class="form-group col-md-3">
                 {{Form::label('c_orchard','Grass Cutter')}}
-                {{Form::text('grass_cutter',0,['class'=>'form-control','id'=>'grass_cutter', 'placeholder' =>'cultivated'])}}
+                {{Form::number('grass_cutter',0,['class'=>'form-control','id'=>'grass_cutter', 'placeholder' =>'cultivated'])}}
             </div>
             <div class="form-group col-md-3">
                 {{Form::label('total','Greenhouse')}}
-                {{Form::text('green_house',0,['class'=>'form-control','id'=>'green_house', 'placeholder' =>'total'])}}
+                {{Form::number('green_house',0,['class'=>'form-control','id'=>'green_house', 'placeholder' =>'total'])}}
             </div>  
         </div>
             <br>
@@ -109,7 +109,7 @@ color: red;
         
     {!! Form::close() !!}
 @endsection
-<script src="{{ asset('js/app.js') }}"></script>
+<!-- <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -262,4 +262,4 @@ color: red;
         });
     });
      
-</script>
+</script> -->
