@@ -54,7 +54,7 @@ class PrimaryFocusController extends Controller
         $this->validate($request,[
             'title' =>'required|min:5',
             'des' =>'required|min:6',
-            'budget' =>'required|numeric',
+            'budget' =>'numeric',
             'date' =>'required|date'
         ]);
         
@@ -102,7 +102,7 @@ class PrimaryFocusController extends Controller
         $this->validate($request,[
             'title' =>'required|min:5',
             'des' =>'required|min:6',
-            'budget' =>'required|numeric',
+            'budget' =>'numeric',
             'date' =>'required|date'
         ]);
         

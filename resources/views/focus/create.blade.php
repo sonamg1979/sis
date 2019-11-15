@@ -12,15 +12,15 @@ color: red;
 }
 </style>
     <div class="card card-body" style="max-width: 40rem;">
-        <h3>New Primary Focus</h3><hr>
+        <h3>New Primary Focus of the Sector</h3><hr>
         {!! Form::open(['action' => 'PrimaryFocusController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
     
-            {{Form::label('focus','Title of Primary Focus')}}<br/>
+            {{Form::label('focus','Title of Primary Focus of the Sector')}}<br/>
             {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
             {{Form::label('focus','Description of Primary Focus')}}<br/>
             <textarea rows="4", cols="54" class="form-control" id="des" name="des" style="resize:none, "></textarea>
             {{Form::label('focus','Estimated Budget (in million)')}}<br/>
-            {{Form::number('budget',null,['class'=>'form-control','id'=>'budget', 'placeholder' =>'Estimated Budget'])}}
+            {{Form::text('budget',0,['class'=>'form-control','id'=>'budget', 'placeholder' =>'Estimated Budget if any'])}}
             {{Form::label('focus','Completion Date')}}<br/>
             {{Form::date('date', date('Y-m-d'), ['class'=>'form-control'])}}
             <br>
@@ -29,7 +29,7 @@ color: red;
         
     {!! Form::close() !!}
 @endsection
-<script src="{{ asset('js/app.js') }}"></script>
+<!-- <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -46,4 +46,4 @@ color: red;
         });
     });
      
-</script>
+</script> -->
