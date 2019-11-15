@@ -14,9 +14,9 @@
                 <th>Year</th>
                 <th>Gewog</th>
                 <th>Location</th>
-                <th>Dry</th>
-                <th>Wet</th>
-                <th>Total</th>
+                <th>Dry (in acres)</th>
+                <th>Wet (in acres)</th>
+                <th>Total Land (in acres)</th>
             </tr>
             </thead>
             <tbody>

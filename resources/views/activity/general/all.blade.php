@@ -11,7 +11,7 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Type</th>
-                <th>Total Budget</th>
+                <th>Total Budget (in million)</th>
                 <th>Status</th>
                 <th>Site Engineer</th>
                 <th>Action</th>

@@ -3,8 +3,8 @@
 
 <div class="container-fluid">
         <div class="card mb-5">
-                <div class="card-header bg-info"><h3>Employee Details</h3></div>
-                <div class="card-block p-0">
+                <div class="card-header bg-alert"><h4>Employee Details</h4></div>
+                <div class="card-block p-1">
                     <div class="table-responsive">
                     <table class="table table-sm" id="employee">
                         <thead class="">
