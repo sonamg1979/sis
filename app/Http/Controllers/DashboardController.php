@@ -48,7 +48,7 @@ class DashboardController extends Controller
             ->select('profiles.employee_id', 'profiles.employee_name', 
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
-            ->paginate(5);
+            ->get();
         $acty = DB::table('activities')
             ->join('subsector', 'activities.subsector', '=', 'subsector.id')
             ->where('f_year', '=', $fyear)
