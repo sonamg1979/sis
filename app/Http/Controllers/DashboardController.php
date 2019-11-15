@@ -440,7 +440,7 @@ class DashboardController extends Controller
             'agrigenerals.benefeciaries', 'agrigenerals.area', 'agrigenerals.year',
             'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female', 'subsector.subsector',
             'agrigenerals.status', 'construct_modes.construct_mode', 'construct_types.construct_type','chennel_types.chennel_type')
-            ->paginate(10);
+            ->get();
         return view('agriculture.general.irrigation')->with('datas',$info);
     }
     public function agri_farm_road()
