@@ -53,17 +53,17 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                         <ul class="timeline">
-                            @foreach ($activity as $data)
+                            @foreach ($acty as $data)
                                 <li>
                                     <!--"_blank" tıklanan linkin yeni sekmede açılmasını sağlar.-->
-                                    <a href="/dashboard/activity_show/{{$data->id}}">{{$data->sector}}</a>
+                                    <a href="/dashboard/activity_show/{{$data->id}}">{{$data->subsector}}</a>
                                     <span class="float-right">{{$data->edate}}</span>
                                     <p class="article">{{$data->activity}}</p>
                                 </li>
                             @endforeach
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    {{$activity->links()}}
+                                    {{$acty->links()}}
                                 </div>
                     
                             </div>

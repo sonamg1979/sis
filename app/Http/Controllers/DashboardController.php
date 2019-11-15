@@ -49,15 +49,15 @@ class DashboardController extends Controller
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
             ->paginate(5);
-        $activity = DB::table('activities')
-            ->join('sector', 'activities.sector', '>=', 'sector.id')
+        $acty = DB::table('activities')
+            ->join('subsector', 'activities.subsector', '=', 'subsector.id')
             ->where('f_year', '=', $fyear)
-            ->orderBy('edate', 'desc')
+            ->orderBy('edate', 'asc')
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
-            'activities.sdate', 'activities.edate', 'sector.sector', 'activities.allotted_budget')
+            'activities.sdate', 'activities.edate','subsector.subsector' , 'activities.allotted_budget')
             ->paginate(10);
         return view('dashboard')
-            ->with('activity',$activity)
+            ->with('acty',$acty)
             ->with('events',$events)
             ->with('profiles',$profile);
     }
