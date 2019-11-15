@@ -84,8 +84,9 @@
                                     <table class="table table-sm table-stripped">
                                         <thead>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Event</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Event Title</th>
                                                 <th width="10%">Agency</th>
                                             </tr>
                                         </thead>
@@ -96,6 +97,11 @@
                                                 <div class="dayofmonth">{{Carbon\Carbon::parse($data->sdate)->format('d')}}</div>
                                                     <div class="dayofweek">{{Carbon\Carbon::parse($data->sdate)->format('l')}}</div>
                                                     <div class="shortdate text-muted">{{Carbon\Carbon::parse($data->sdate)->format('F Y')}}</div>
+                                                </td>
+                                                <td class="agenda-date" class="active" rowspan="1">
+                                                <div class="dayofmonth">{{Carbon\Carbon::parse($data->edate)->format('d')}}</div>
+                                                    <div class="dayofweek">{{Carbon\Carbon::parse($data->edate)->format('l')}}</div>
+                                                    <div class="shortdate text-muted">{{Carbon\Carbon::parse($data->edate)->format('F Y')}}</div>
                                                 </td>
                                                 <td class="agenda-events">
                                                     <div class="agenda-event">
