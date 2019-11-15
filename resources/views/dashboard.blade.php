@@ -5,7 +5,8 @@
         <div class="card mb-5">
                 <div class="card-header bg-info"><h3>Employee Details</h3></div>
                 <div class="card-block p-0">
-                    <table class="table table-sm">
+                    <div class="table-responsive">
+                    <table class="table table-sm" id="employee">
                         <thead class="">
                             <tr>
                                 <th>Sl</th>
@@ -34,9 +35,8 @@
                     </table>
                     <div class="text-center"><a href="/dashboard/employee_all">View All</a></div>
                     <div class="row">
-                        <div class="col-12 text-center">
-                            {{$profiles->links()}}
-                        </div>
+                    </div>
+                        
             
                     </div>
                 </div>
