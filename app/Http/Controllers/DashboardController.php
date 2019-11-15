@@ -48,25 +48,14 @@ class DashboardController extends Controller
             ->select('profiles.employee_id', 'profiles.employee_name', 
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
-<<<<<<< HEAD
             ->paginate(5);
         $acty = DB::table('activities')
             ->join('subsector', 'activities.subsector', '=', 'subsector.id')
-=======
-            ->get();
-        $activity = DB::table('activities')
-            ->join('sector', 'activities.sector', '>=', 'sector.id')
->>>>>>> 92e0fd99b69b748c629f6d09f2bf34e95f9e5d68
             ->where('f_year', '=', $fyear)
             ->orderBy('edate', 'asc')
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
-<<<<<<< HEAD
             'activities.sdate', 'activities.edate','subsector.subsector' , 'activities.allotted_budget')
             ->paginate(10);
-=======
-            'activities.sdate', 'activities.edate', 'sector.sector', 'activities.allotted_budget')
-            ->paginate();
->>>>>>> 92e0fd99b69b748c629f6d09f2bf34e95f9e5d68
         return view('dashboard')
             ->with('acty',$acty)
             ->with('events',$events)
