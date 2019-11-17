@@ -29,15 +29,15 @@ color: red;
             <div class="form-row border" style="color:coral">
                 <div class="form-group col-md-4">
                     {{Form::label('length','Length of channel(KM)')}}
-                    {{Form::number('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
+                    {{Form::text('length',0,['class'=>'form-control','id'=>'length', 'placeholder' =>'Length'])}}
                 </div>
                 <div class="form-group col-md-4">
                     {{Form::label('hh','Benefeciaries household(No.)')}}
                     {{Form::number('hh',0,['class'=>'form-control','id'=>'hh', 'placeholder' =>'Benefeciaries'])}}
                 </div> 
                 <div class="form-group col-md-4">
-                    {{Form::label('area','Command area (Acre)')}}
-                    {{Form::number('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
+                    {{Form::label('area','Command area (in Acre)')}}
+                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
                 </div>    
             </div> 
             <div class="form-row border" style="color:coral">
@@ -62,7 +62,7 @@ color: red;
                 <div class="form-group col-md-4">
                     {{Form::label('chennel','Type of channels')}}
                     <select id="ctype" name="ctype" class="form-control" required>
-                        <option value=''>Chennel Type</option>
+                        <option value=''>Channel Type</option>
                         @foreach($ctypes as $row)
                             <option value="{{$row->id}}">{{$row->chennel_type}}</option>
                         @endforeach
