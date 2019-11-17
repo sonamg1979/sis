@@ -37,7 +37,7 @@ color: red;
                 </div> 
                 <div class="form-group col-md-4">
                     {{Form::label('area','Command area (in Acre)')}}
-                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area'])}}
+                    {{Form::text('area',0,['class'=>'form-control','id'=>'area', 'placeholder' =>'Area','step'=>'any'])}}
                 </div>    
             </div> 
             <div class="form-row border" style="color:coral">
@@ -104,7 +104,7 @@ color: red;
         
     {!! Form::close() !!}
 @endsection
-<script src="{{ asset('js/app.js') }}"></script>
+<!-- <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -144,4 +144,4 @@ color: red;
         });
     })
      
-</script>
+</script> -->
