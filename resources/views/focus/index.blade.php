@@ -13,6 +13,7 @@
         <table class="table table-striped table-sm">
             <tr>
                 <th>Sl</th>
+                <th>Year</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Estimated Budget</th>
@@ -22,6 +23,7 @@
             @foreach ($focus as $row)
                 <tr>
                     <td>{{$loop->index+1}}</td>
+                    <td>{{$row->year}}</td>
                     <td>{{$row->title}}</td>
                     <td>{{$row->description}}</td>
                     <td>{{$row->budget}}</td>

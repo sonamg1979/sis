@@ -10,6 +10,15 @@
     <div class="card card-body" style="max-width: 40rem;">
         <h3>Edit Primary Focus</h3>
         {!! Form::open(['action' => ['PrimaryFocusController@update',$focus->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+        <div class="form-group">
+            <label for="">Year</label>
+            <select id="year" name="year" class="form-control" required>
+                <option value=''>Year</option>
+                @for($yr=now()->year-3; $yr<=now()->year; $yr++)
+                    <option value="{{$yr}}" {{($yr == $events->year) ? 'selected' : '' }}>{{$yr}}</option>
+                @endfor
+            </select>
+        </div>
         {{Form::label('focus','Title of Primary Focus')}}<br/>
         {{Form::text('title',$focus->title,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
         {{Form::label('focus','Description of Primary Focus')}}<br/>

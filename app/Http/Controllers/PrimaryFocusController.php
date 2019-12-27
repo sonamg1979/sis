@@ -52,6 +52,7 @@ class PrimaryFocusController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'year' =>'required',
             'title' =>'required|min:5',
             'des' =>'required|min:6',
             'budget' =>'required|numeric',
@@ -60,6 +61,7 @@ class PrimaryFocusController extends Controller
         
         $focus = new PrimaryFocus;
         $focus->subsector = session('SUBSEC');
+        $focus->year = $request->input('year');
         $focus->title = $request->input('title');
         $focus->description = $request->input('des');
         $focus->budget = $request->input('budget');
@@ -100,6 +102,7 @@ class PrimaryFocusController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
+            'year' =>'required',
             'title' =>'required|min:5',
             'des' =>'required|min:6',
             'budget' =>'required|numeric',
@@ -108,6 +111,7 @@ class PrimaryFocusController extends Controller
         
         $focus = PrimaryFocus::find($id);
         $focus->subsector = session('SUBSEC');
+        $focus->year = $request->input('year');
         $focus->title = $request->input('title');
         $focus->description = $request->input('des');
         $focus->budget = $request->input('budget');

@@ -14,6 +14,7 @@
             <thead>
             <tr>
                 <th>Sl</th>
+                <th>Year</th>
                 <th>Agency</th>
                 <th>Title</th>
                 <th>Description</th>
@@ -25,6 +26,7 @@
             @foreach ($focus as $row)
                 <tr>
                     <td>{{$loop->index+1}}</td>
+                    <td>{{$row->year}}</td>
                     <td>{{$row->subsector}}</td>
                     <td>{{$row->title}}</td>
                     <td>{{$row->description}}</td>

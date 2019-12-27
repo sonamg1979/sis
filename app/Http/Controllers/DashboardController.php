@@ -166,11 +166,10 @@ class DashboardController extends Controller
             ->join('subsector', 'school_student_infos.subsector', '=', 'subsector.id')
             ->join('class', 'school_student_infos.class', '=', 'class.id')
             ->where('school_student_infos.year', '=', session('sess_Year'))
-            ->orderBy('school_student_infos.class')
-            ->groupBy('school_student_infos.class')
-            ->select('school_student_infos.id', 'school_student_infos.year', 'subsector.subsector',
-            DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'),
-            'class.class')
+            ->orderBy('subsector.subsector')
+            ->groupBy('subsector.subsector','school_student_infos.class')
+            ->select('school_student_infos.id', 'school_student_infos.year', 'subsector.subsector','class.class',
+            DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'))
             ->get();
             return view('school.general.std-info-sch')->with('students',$students);
     }
@@ -179,6 +178,8 @@ class DashboardController extends Controller
         $students = DB::table('school_student_infos')
             ->join('subsector', 'school_student_infos.subsector', '=', 'subsector.id')
             ->where('school_student_infos.year', '=', session('sess_Year'))
+            ->groupBy('school_student_infos.subsector')
+            ->orderBy('subsector.subsector')
             ->select('school_student_infos.id', 'school_student_infos.year', 'subsector.subsector',
             DB::raw('SUM(school_student_infos.male) as male,SUM(school_student_infos.female) as female'))
             ->get();
@@ -368,7 +369,8 @@ class DashboardController extends Controller
     {
         $focus = DB::table('primary_foci')
             ->join('subsector', 'subsector.id', '=', 'primary_foci.subsector')
-            ->select('primary_foci.id',  'primary_foci.title', 'primary_foci.description', 'primary_foci.budget', 'primary_foci.complete_date',
+            ->where('primary_foci.year', '=', session('sess_Year'))
+            ->select('primary_foci.id', 'primary_foci.year', 'primary_foci.title', 'primary_foci.description', 'primary_foci.budget', 'primary_foci.complete_date',
                 'subsector.subsector')
             ->paginate(10);
         return view('focus.general.all')->with('focus',$focus);

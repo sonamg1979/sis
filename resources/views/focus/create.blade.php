@@ -14,7 +14,13 @@ color: red;
     <div class="card card-body" style="max-width: 40rem;">
         <h3>New Primary Focus</h3><hr>
         {!! Form::open(['action' => 'PrimaryFocusController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
-    
+            {{Form::label('focus','Year')}}<br/>    
+            <select id="year" name="year" class="form-control" required>
+                <option value=''>Year</option>
+                @for($yr=now()->year+1; $yr>=now()->year; $yr--)
+                    <option value="{{$yr}}">{{$yr}}</option>
+                @endfor
+            </select>
             {{Form::label('focus','Title of Primary Focus')}}<br/>
             {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
             {{Form::label('focus','Description of Primary Focus')}}<br/>
