@@ -16,9 +16,9 @@
                 <th>Location</th>
                 <th>Length</th>
                 <th>Benefeciaries (HH)</th>
-                <th>Dry Land</th>
-                <th>Wet Land</th>
-                <th>Total</th>
+                <th>Dry Land (in acres)</th>
+                <th>Wet Land (in acres)</th>
+                <th>Total Land (in acres)</th>
                 <th>Status</th>
                 <th>Type</th>
             </tr>

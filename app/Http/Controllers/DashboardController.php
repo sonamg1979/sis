@@ -48,7 +48,7 @@ class DashboardController extends Controller
             ->select('profiles.employee_id', 'profiles.employee_name', 
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
-            ->paginate(5);
+            ->get();
         $acty = DB::table('activities')
             ->join('subsector', 'activities.subsector', '=', 'subsector.id')
             ->where('f_year', '=', $fyear)
@@ -442,7 +442,7 @@ class DashboardController extends Controller
             'agrigenerals.benefeciaries', 'agrigenerals.area', 'agrigenerals.year',
             'agrigenerals.associations', 'agrigenerals.male', 'agrigenerals.female', 'subsector.subsector',
             'agrigenerals.status', 'construct_modes.construct_mode', 'construct_types.construct_type','chennel_types.chennel_type')
-            ->paginate(10);
+            ->get();
         return view('agriculture.general.irrigation')->with('datas',$info);
     }
     public function agri_farm_road()

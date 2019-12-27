@@ -3,8 +3,8 @@
 
 <div class="container-fluid">
         <div class="card mb-5">
-                <div class="card-header bg-info"><h3>Employee Details</h3></div>
-                <div class="card-block p-0">
+                <div class="card-header bg-alert"><h4>Employee Details</h4></div>
+                <div class="card-block p-1">
                     <div class="table-responsive">
                     <table class="table table-sm" id="employee">
                         <thead class="">
@@ -84,8 +84,9 @@
                                     <table class="table table-sm table-stripped">
                                         <thead>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Event</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Event Title</th>
                                                 <th width="10%">Agency</th>
                                             </tr>
                                         </thead>
@@ -96,6 +97,11 @@
                                                 <div class="dayofmonth">{{Carbon\Carbon::parse($data->sdate)->format('d')}}</div>
                                                     <div class="dayofweek">{{Carbon\Carbon::parse($data->sdate)->format('l')}}</div>
                                                     <div class="shortdate text-muted">{{Carbon\Carbon::parse($data->sdate)->format('F Y')}}</div>
+                                                </td>
+                                                <td class="agenda-date" class="active" rowspan="1">
+                                                <div class="dayofmonth">{{Carbon\Carbon::parse($data->edate)->format('d')}}</div>
+                                                    <div class="dayofweek">{{Carbon\Carbon::parse($data->edate)->format('l')}}</div>
+                                                    <div class="shortdate text-muted">{{Carbon\Carbon::parse($data->edate)->format('F Y')}}</div>
                                                 </td>
                                                 <td class="agenda-events">
                                                     <div class="agenda-event">

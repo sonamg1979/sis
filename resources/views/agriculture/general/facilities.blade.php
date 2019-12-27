@@ -11,9 +11,9 @@
             @foreach ($activitys as $row)
                 <tr>
                     <th>Land Holding</th>
-                    <th>Total Land</th>
-                    <th>Cultivated Land</th>
-                    <th>Felow Land</th>
+                    <th>Total Land (in acres)</th>
+                    <th>Cultivated Land (in acres)</th>
+                    <th>Felow Land (in acres)</th>
                 </tr>
                 <tr>
                     <td>Wet Land</td>

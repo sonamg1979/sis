@@ -7,6 +7,7 @@
 </style>
     <h3> Irrigation channel details</h3>
     @if(count($datas)>0)
+    <div class="table-responsive">
         <table class="table table-sm" id="myTable">
             <thead>
             <tr>
@@ -47,12 +48,13 @@
             @endforeach
             </tbody>
         </table>
-        <div class="row">
+    </div>
+        <!-- <div class="row">
             <div class="col-12 text-center">
-                {{$datas->links()}}
+                
             </div>
 
-        </div>
+        </div> -->
     @else
         <p>No data to display</p>
     @endif

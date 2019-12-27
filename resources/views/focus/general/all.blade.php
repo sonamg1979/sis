@@ -18,7 +18,7 @@
                 <th>Agency</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Estimated Budget</th>
+                <th>Estimated Budget (in million)</th>
                 <th>Completion Date</th>
             </tr>
             </thead>
