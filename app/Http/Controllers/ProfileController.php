@@ -136,8 +136,12 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+        $designations=DB::table('designations')
+            ->get();
+        $qualifications=DB::table('qualifications')
+            ->get();
         $profile=Profile::find($id);
-        return view('profile.edit')->with('profiles',$profile);
+        return view('profile.edit')->with('profiles',$profile)->with('designations',$designations)->with('qualifications',$qualifications);
     }
 
     /**

@@ -60,7 +60,7 @@
                     @else
                     <h5>{{ Auth::user()->name }}</h5>
                     <li class="dropdown">
-                        <a  href="/user/logout" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Logout') }}</a>
+                        <a  href="{{url('/user/logout') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Logout') }}</a>
                             <form id="logout-form" action="{{ 'App\User' == Auth::getProvider()->getModel() ? route('logout') : route('logout') }}" method="GET" style="display: none;">
                                 @csrf
                             </form>

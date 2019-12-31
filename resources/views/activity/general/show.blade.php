@@ -14,11 +14,29 @@
     }
 </style>
 
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
-    <center><h3> Activity Details</h3></center><hr>
-    <div class="container">
-        @foreach($activitys as $activity)
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <center><h3> Activity Details</h3></center>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Project/Activites</a></li>
+              <li class="breadcrumb-item active">Activity detail</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+<section class="content">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               @foreach($activitys as $activity)
             <div class="row">
                 <div class="col-md-6 img">
                     <h5>{{$activity->sector.' : '.$activity->subsector}}</h5>
@@ -56,8 +74,13 @@
                     <p>{{$activity->edate}}</p>
                 </div>
             </div>
-        @endforeach
+        @endforeach 
+            </div>
         </div>
+    </div>
+</section>
+    
+    
         <hr>
         <center><a href="/dashboard" class="btn btn-primary">Home</a></center>
     

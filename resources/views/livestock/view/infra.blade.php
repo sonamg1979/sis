@@ -1,14 +1,28 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
-<style>
-    td {
-        height: 5px;
-    }
-</style>
-    <h3> Livestock infrastructure</h3>
-    @if(count($datas)>0)
-        <table class="table table-striped table-sm">
-            @foreach ($datas as $row)
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Livestock infrastructure</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">livestock</a></li>
+              <li class="breadcrumb-item active">infrastructure</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+<section class="content">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @if(count($datas)>0)
+                <table id="table11" class="table table-bordered table-hover">
+                    @foreach ($datas as $row)
                 <tr>
                     <th>Artifical Insemination center</th>
                     <th>Bio Gas</th>
@@ -40,9 +54,15 @@
                     <td>{{$row->diary_micro}}</td>
                     <td>{{$row->diary_commercial}}</td>
                 </tr>
-            @endforeach
-        </table>
-    @else
-        <p>No data to display</p>
-    @endif
+                @endforeach
+                </table>
+                @else
+                <p>No data to display</p>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
+    
+        

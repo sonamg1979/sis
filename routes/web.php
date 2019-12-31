@@ -164,3 +164,9 @@ Route::resource('/heritage','MasterHeritageController');
 Route::get('/json-subsector','SuperUserController@sub_sector');
 
 
+Route::get('/test', function(){
+
+    return view('layouts.master');
+});
+
+

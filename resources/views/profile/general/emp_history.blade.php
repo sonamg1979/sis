@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <h3>Employee History List</h3>
     @if(count($historys)>0)

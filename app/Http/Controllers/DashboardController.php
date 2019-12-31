@@ -38,7 +38,7 @@ class DashboardController extends Controller
             ->orderBy('events.sdate','asc')
             ->select('events.id', 'events.events', 
             'events.sdate', 'events.edate', 'subsector.subsector')
-            ->paginate(10);
+            ->paginate(5);
         $profile = DB::table('profiles')
             ->join('sector', 'profiles.sector', '=', 'sector.id')
             ->join('subsector', 'profiles.subsector', '=', 'subsector.id')
@@ -55,11 +55,24 @@ class DashboardController extends Controller
             ->orderBy('edate', 'asc')
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
             'activities.sdate', 'activities.edate','subsector.subsector' , 'activities.allotted_budget')
-            ->paginate(10);
+            ->paginate(5);
+        $data=DB::table('activities')
+                ->select(
+                    DB::raw('status as status'),
+                    DB::raw('count(*) as number'))
+                ->groupBy('status')
+                ->get();
+        $array[]=['Status','Number'];
+
+        foreach ($data as $key => $value) {
+            
+            $array[++$key]=[$value->status, $value->number];
+        }
         return view('dashboard')
             ->with('acty',$acty)
             ->with('events',$events)
-            ->with('profiles',$profile);
+            ->with('profiles',$profile)
+            ->with('array',json_encode($array));
     }
     public function populationage()
     {

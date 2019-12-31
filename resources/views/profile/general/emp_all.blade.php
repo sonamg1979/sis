@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <h3>Employee Details</h3>
     @if(count($profiles)>0)

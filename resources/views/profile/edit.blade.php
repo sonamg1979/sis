@@ -39,6 +39,24 @@
             {{Form::radio('type', 'R', $profiles->type == 'R' ? 'selected' : '', ['class'=>'form-control-sm d-inline'])}} Regular
         </div>
         <div class="form-group">
+                <label for="">Qualification</label>
+                <select id="qualification" name="qualification" class="form-control" required>
+                    <option value='{{$profiles->qualification}}'>Select qualification</option>
+                    @foreach($qualifications as $qualification)
+                        <option value="{{$qualification->id}}">{{$qualification->qualification}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Designation</label>
+                <select id="designation" name="designation" class="form-control" required>
+                    <option value='{{$profiles->designation}}'>Select Designation</option>
+                    @foreach($designations as $designation)
+                        <option value="{{$designation->id}}">{{$designation->designation}}</option>
+                    @endforeach
+                </select>
+            </div>
+        <div class="form-group">
             {{Form::label('cid','CID Number')}}
             {{Form::text('cid',$profiles->cid_number,['class'=>'form-control','placeholder'=>'CID number'])}}
         </div>
