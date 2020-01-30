@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Super Admin Reset Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('super.password.update') }}">
+                    <form method="POST" action="{{ route('super.password.request') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">

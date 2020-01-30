@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use DB;
 
 class AdminLoginController extends Controller
 {
+    use AuthenticatesUsers;
+    
     protected $redirectTo = '/admin';
     public function __construct()
     {
@@ -46,10 +49,24 @@ class AdminLoginController extends Controller
         //unsuccesful, redirect back to the login
         return redirect()->back()->withInput($request->only('email','remember'));
     }
-    public function logout(Request $request) {
-        Auth::guard('admin')->logout();
-        $request->session()->flush();
-        $request->session()->regenerate();
-        return redirect()->guest(route( 'admin.login' ));
+    // public function logout(Request $request) {
+    //     Auth::guard('admin')->logout();
+    //     $request->session()->flush();
+    //     $request->session()->regenerate();
+    //     return redirect()->guest(route( 'admin.login' ));
+    // }
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/admin/login');
     }
 }
