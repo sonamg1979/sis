@@ -39,7 +39,7 @@
 @section('content')
 <section class="content-header">
 <div class="card card-danger">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <h3 class="card-title">Activity Status</h3>
 
                 <div class="card-tools">
@@ -50,7 +50,7 @@
               </div>
               <div class="card-body">
                 <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
+              </div> -->
               <!-- /.card-body -->
             </div>
 <section class="content">
