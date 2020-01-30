@@ -43,7 +43,7 @@ class SuperResetPasswordNotification extends Notification
     {
         return (new MailMessage)
                     ->line('This email is pertaining to password request.')
-                    ->action('Password Reset', route('super.password.reset',$this->token))
+                    ->action('Super Password Reset', route('super.password.reset',$this->token))
                     ->line('Thank you for using our application!');
     }
 
