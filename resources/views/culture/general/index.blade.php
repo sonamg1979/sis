@@ -35,7 +35,7 @@
         <div class="card">
             <div class="card-body">
                 @if(count($infras)>0)
-                <table id="table15" class="table table-bordered table-hover">
+                <table id="table15" class="table table-bordered table-hover ">
                     <thead>
                         <tr>
                             <th>Sl</th>

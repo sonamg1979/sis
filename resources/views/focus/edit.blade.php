@@ -15,7 +15,7 @@
             <select id="year" name="year" class="form-control" required>
                 <option value=''>Year</option>
                 @for($yr=now()->year-3; $yr<=now()->year; $yr++)
-                    <option value="{{$yr}}" {{($yr == $events->year) ? 'selected' : '' }}>{{$yr}}</option>
+                    <option value="{{$yr}}" {{($yr == $focus->year) ? 'selected' : '' }}>{{$yr}}</option>
                 @endfor
             </select>
         </div>

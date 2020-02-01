@@ -49,6 +49,7 @@ class DashboardController extends Controller
             'profiles.dob', 'profiles.sex', 'profiles.cid_number', 'profiles.email', 'profiles.photo', 'profiles.id',
             'sector.sector', 'subsector.subsector', 'designations.designation', 'qualifications.qualification')
             ->get();
+
         $acty = DB::table('activities')
             ->join('subsector', 'activities.subsector', '=', 'subsector.id')
             ->where('f_year', '=', $fyear)
@@ -56,6 +57,14 @@ class DashboardController extends Controller
             ->select('activities.id', 'activities.f_year', 'activities.activity', 
             'activities.sdate', 'activities.edate','subsector.subsector' , 'activities.allotted_budget')
             ->paginate(5);
+
+        $focus = DB::table('primary_foci')
+            ->join('subsector', 'subsector.id', '=', 'primary_foci.subsector')
+            ->where('primary_foci.year', '=', session('sess_Year'))
+            ->select('primary_foci.id', 'primary_foci.year', 'primary_foci.title', 'primary_foci.description', 'primary_foci.budget', 'primary_foci.complete_date',
+                'subsector.subsector')
+            ->paginate(5);
+
         $data=DB::table('activities')
                 ->select(
                     DB::raw('status as status'),
@@ -72,6 +81,7 @@ class DashboardController extends Controller
             ->with('acty',$acty)
             ->with('events',$events)
             ->with('profiles',$profile)
+            ->with('focus',$focus)
             ->with('array',json_encode($array));
     }
     public function populationage()
@@ -373,7 +383,7 @@ class DashboardController extends Controller
             ->select('activities.id', 'activities.f_year', 
             'activities.activity', 'activities.budget_line', 'activities.allotted_budget', 'activities.sdate', 'activities.edate', 'status.status',
             'sector.sector', 'subsector.subsector', 'budgets.budget','profiles.employee_name')
-            ->paginate(20);
+            ->get();
         //$activity=activity::find($id);
         //return $activity;
         return view('activity.general.all')->with('activitys',$activity);
