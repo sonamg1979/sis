@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('script')
+<script type="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
       $(function () {
         $('#table16').DataTable({
@@ -14,24 +16,21 @@
       });
     </script>
     <script type="text/javascript">
-        var analytics = @json($array);
+        var analytics = <?php echo $status; ?>
 
-    google.charts.load('current', {'packages':['corechart']});
+   google.charts.load('current', {'packages':['corechart']});
 
-    google.charts.setOnLoadCallback(drawChart);
+   google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart()
-    {
-      var data=google.visualization.arrayToDataTable(analytics);
-      
-      var options={
-
-        title: 'ALL PROJECT STATUS IN PERCENTAGE',
-          is3D: true,
-      }; 
-      var chart= new google.visualization.PieChart(document.getElementById('pieChart'));
-      chart.draw(data, options);
-    }
+   function drawChart()
+   {
+    var data = google.visualization.arrayToDataTable(analytics);
+    var options = {
+     title : 'Percentage of Activity Status- Legend (A: At Risk; C: Completed; H: On Hold; N: Not Updated; O: On Track )'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    chart.draw(data, options);
+   }
 
     </script>
 
@@ -39,7 +38,7 @@
 @section('content')
 <section class="content-header">
 <div class="card card-danger">
-              <!-- <div class="card-header">
+              <div class="card-header">
                 <h3 class="card-title">Activity Status</h3>
 
                 <div class="card-tools">
@@ -49,8 +48,8 @@
                 </div>
               </div>
               <div class="card-body">
-                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div> -->
+                <div id="pie_chart" style="min-height: 350px; height: 350px; max-height: 250px; max-width: 100%;"></div>
+              </div>
               <!-- /.card-body -->
             </div>
 <section class="content">

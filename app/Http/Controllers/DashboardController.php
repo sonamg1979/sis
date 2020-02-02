@@ -77,12 +77,13 @@ class DashboardController extends Controller
             
             $array[++$key]=[$value->status, $value->number];
         }
+
         return view('dashboard')
             ->with('acty',$acty)
             ->with('events',$events)
             ->with('profiles',$profile)
             ->with('focus',$focus)
-            ->with('array',json_encode($array));
+            ->with('status',json_encode($array));
     }
     public function populationage()
     {
