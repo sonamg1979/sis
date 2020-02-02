@@ -55,7 +55,7 @@
             </div>
 <section class="content">
     <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-start">
     <div class="col-5">
         <div class="card">
             <div class="card-header bg-warning">
@@ -139,6 +139,44 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header bg-danger">
+                <h3 class="card-title">Sector Primary Focus</h3></div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="agenda">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>SL.</th>
+                                            <th>Year</th>
+                                            <th>Sector</th>
+                                            <th>Title</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($focus as $focuses)
+                                        <tr>
+                                            <td>{{$loop->index+1}}</td>
+                                            <td>{{$focuses->year}}</td>
+                                            <td>{{$focuses->subsector}}</td>
+                                            <td>{{$focuses->title}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
     </div>
     </div>
 </section>
