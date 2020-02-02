@@ -21,12 +21,7 @@ color: red;
                     <option value="{{$yr}}">{{$yr}}</option>
                 @endfor
             </select>
-<<<<<<< HEAD
             {{Form::label('focus','Title of Primary Focus')}}<br/>
-=======
-    
-            {{Form::label('focus','Title of Primary Focus of the Sector')}}<br/>
->>>>>>> 750e9d520871f761b44eca6a51ae0a54ed0baa43
             {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
             {{Form::label('focus','Description of Primary Focus')}}<br/>
             <textarea rows="4", cols="54" class="form-control" id="des" name="des" style="resize:none, "></textarea>
