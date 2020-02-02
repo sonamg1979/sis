@@ -55,7 +55,9 @@ class ActivityController extends Controller
         $budget=DB::table('budgets')
             ->get();
         $engineer=DB::table('profiles')
-            ->where('subsector', '=', 5)
+            ->where('sector', '=', session('SEC'))
+            ->Where('subsector', '=', session('SUBSEC'))
+            ->orWhere('subsector', '=', 5)
             ->get();
         return view('activity.create')
             ->with('budgets',$budget)

@@ -95,7 +95,6 @@
                                 </ul>
                             </li>
                         <!---Acitivity--->
-                        @if((session('EMPID')=='') || is_null(session('EMPID')))
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -103,7 +102,6 @@
                                 <li><a href="/activity">View</a></li>
                             </ul>
                         </li>
-                        @endif
                         <!---Population--->
                         @if(session('SEC')==2)
                         <li class="dropdown">

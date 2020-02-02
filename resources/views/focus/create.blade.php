@@ -14,7 +14,6 @@ color: red;
     <div class="card card-body" style="max-width: 40rem;">
         <h3>New Primary Focus of the Sector</h3><hr>
         {!! Form::open(['action' => 'PrimaryFocusController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
-<<<<<<< HEAD
             {{Form::label('focus','Year')}}<br/>    
             <select id="year" name="year" class="form-control" required>
                 <option value=''>Year</option>
@@ -23,10 +22,6 @@ color: red;
                 @endfor
             </select>
             {{Form::label('focus','Title of Primary Focus')}}<br/>
-=======
-    
-            {{Form::label('focus','Title of Primary Focus of the Sector')}}<br/>
->>>>>>> be83f40de7ebef942e8feede468d2b067001879d
             {{Form::text('title',null,['class'=>'form-control','id'=>'title', 'placeholder' =>'Primary Focus'])}}
             {{Form::label('focus','Description of Primary Focus')}}<br/>
             <textarea rows="4", cols="54" class="form-control" id="des" name="des" style="resize:none, "></textarea>
